@@ -1,4 +1,6 @@
-SOURCE_FILE := ../../kernel/vadd/vadd_kernel.cl
+SOURCE_FILES = ../../../kernel/vadd/vadd_kernel.cl
+
+default: all
 
 vadd_kernel.xo : $(SOURCE_FILES)
 	xocc -o vadd_kernel.xo -c $(SOURCE_FILES) $(XOCC_OPT_ALL) --target hw --platform $(TARGET_PLATFORM)

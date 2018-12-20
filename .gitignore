@@ -1,2 +1,10 @@
+# CMake build files
 build
+
+# The runtime can create some log files and so will xocc
 *.log
+
+# xocc temp files
+_x
+.Xil
+*.xo

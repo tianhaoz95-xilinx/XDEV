@@ -1,0 +1,1 @@
+XOCC_OPT_ALL = --profile_kernel data:all:all:all
