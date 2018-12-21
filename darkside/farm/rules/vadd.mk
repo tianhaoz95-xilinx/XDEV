@@ -7,3 +7,10 @@ vadd_kernel.xo : $(SOURCE_FILES)
 
 vadd_kernel_hw_all.xclbin : vadd_kernel.xo
 	xocc -o vadd_kernel_hw_all.xclbin -l vadd_kernel.xo $(XOCC_OPT_ALL) --target hw --platform $(TARGET_PLATFORM)
+
+clean:
+	rm -rf _x
+	rm -rf .Xil
+	rm -rf *.log
+	rm -rf vadd_kernel.xo
+	rm -rf vadd_kernel_hw_all.xclbin
