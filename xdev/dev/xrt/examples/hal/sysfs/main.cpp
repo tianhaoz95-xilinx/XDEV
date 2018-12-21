@@ -2,7 +2,7 @@
 #include "xclperf.h"
 #include "xclbin.h"
 #include "easylogging++.h"
-#include "hal/xclbin_helper.h"
+#include "hal/xclbin_helper.hpp"
 #include <iostream>
 
 using namespace std;
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     xclDeviceHandle device_handle = xclOpen(device_index, "sysfs_example.log", xclVerbosityLevel::XCL_INFO);
     LOG(INFO) << "device[0] opened";
     LOG(INFO) << "Loading xclbin ...";
-    load_xclbin("test", device_handle);
+    load_xclbin_with_hal_api("alveo_u200_2018_3_1/hello/hello_kernel_hw_all.xclbin", device_handle);
     LOG(INFO) << "xclbin loaded";
     char data[65536];
     LOG(INFO) << "Sysfs result buffer constructed ...";
