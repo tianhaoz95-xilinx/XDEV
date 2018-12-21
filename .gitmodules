@@ -7,3 +7,6 @@
 [submodule "third_party/XRT"]
 	path = third_party/XRT
 	url = https://github.com/Xilinx/XRT.git
+[submodule "third_party/doxygen"]
+	path = third_party/doxygen
+	url = https://github.com/doxygen/doxygen.git
