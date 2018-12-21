@@ -7,4 +7,4 @@ Test field for XRT development
 
 Examples make assumption that they are launched from build directory and will search data files using relative path if none is specified.
 
-[sysfs api](./xdev/dev/xrt/examples/hal/sysfs/README.md)
+[sysfs api](./xdev/dev/xrt/examples/hal/sysfs)
