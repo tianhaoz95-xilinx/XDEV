@@ -9,3 +9,5 @@ _x
 .Xil
 *.xo
 *.xclbin
+*.ltx
+*.xclbin.info
