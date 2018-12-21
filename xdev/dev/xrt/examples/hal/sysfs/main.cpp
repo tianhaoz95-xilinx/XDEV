@@ -2,6 +2,7 @@
 #include "xclperf.h"
 #include "xclbin.h"
 #include "easylogging++.h"
+#include "hal/xclbin_helper.h"
 #include <iostream>
 
 using namespace std;
@@ -21,6 +22,9 @@ int main(int argc, char* argv[]) {
     unsigned device_index = 0;
     xclDeviceHandle device_handle = xclOpen(device_index, "sysfs_example.log", xclVerbosityLevel::XCL_INFO);
     LOG(INFO) << "device[0] opened";
+    LOG(INFO) << "Loading xclbin ...";
+    load_xclbin("test", device_handle);
+    LOG(INFO) << "xclbin loaded";
     char data[65536];
     LOG(INFO) << "Sysfs result buffer constructed ...";
     xclSysfsQuery query;
