@@ -1,10 +1,12 @@
+/** @file */
+
 #include "xclhal2.h"
 #include "easylogging++.h"
 #include <iostream>
 
-using namespace std;
-
 INITIALIZE_EASYLOGGINGPP
+
+using namespace std;
 
 int main(int argc, char* argv[]) {
     START_EASYLOGGINGPP(argc, argv);

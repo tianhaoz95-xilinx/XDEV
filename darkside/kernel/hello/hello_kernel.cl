@@ -1,3 +1,13 @@
+/** @file */
+
+/**
+ * This is the hello world kernel which
+ * only write "Hello World!" to the char*
+ * input address
+ * @param (input) \b msg - pointer to the
+ * address where "Hello World!" should be
+ * written to
+ */
 kernel __attribute__((reqd_work_group_size(1, 1, 1)))
 void hello_kernel(global char* msg) {
     msg[0] = 'H';

@@ -1,21 +1,21 @@
 var indexSectionsWithContent =
 {
-  0: "cdgmopqrst",
-  1: "cmopq",
-  2: "dgrst"
+  0: "_efghmsx",
+  1: "efhmx",
+  2: "_fgms"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "classes",
-  2: "pages"
+  1: "files",
+  2: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Classes",
-  2: "Pages"
+  1: "Files",
+  2: "Functions"
 };
 

@@ -1,3 +1,5 @@
+/** @file */
+
 #include "xclhal2.h"
 #include "xclperf.h"
 #include "xclbin.h"
@@ -5,11 +7,25 @@
 #include "hal/xclbin_helper.hpp"
 #include <iostream>
 
-using namespace std;
-
 INITIALIZE_EASYLOGGINGPP
 
+using namespace std;
+
+/**
+ * Example to use sysfs query API from xclhal2.h
+ * 
+ * Steps in this code:
+ *  -# probe device
+ *  -# open device
+ *  -# load xclbin
+ *  -# read debug_ip_layout using hal sysfs api
+ *  -# log debug_ip_layout
+ */
 int main(int argc, char* argv[]) {
+    /**
+     * \b START_EASYLOGGINGPP is the entry point to easyloggingpp
+     * which only needs to be called once before any logging
+     */
     START_EASYLOGGINGPP(argc, argv);
     LOG(INFO) << "Starting Sysfs HAL API example ...";
     int device_count = xclProbe();
