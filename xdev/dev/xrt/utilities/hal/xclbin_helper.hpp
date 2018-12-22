@@ -1,3 +1,5 @@
+/** @file */
+
 #ifndef __XCLBIN_HELPER__
 #define __XCLBIN_HELPER__
 
