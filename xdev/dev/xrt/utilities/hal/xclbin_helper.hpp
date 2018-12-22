@@ -14,6 +14,12 @@
 using namespace std;
 namespace fs = boost::filesystem;
 
+/**
+ * Helper function to load xclbin onto device with hal API
+ * 
+ * @param (input) \b id - the id of the xclbin
+ * @param (input) \b device_handle - the hal device handle 
+ */
 void load_xclbin_with_hal_api(string id, xclDeviceHandle device_handle) {
     string xclbin_repo = search_xclbin_repository();
     fs::path xclbin_repo_root(xclbin_repo);
