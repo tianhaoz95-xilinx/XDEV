@@ -10,3 +10,4 @@ Examples make assumption that they are launched from build directory and will se
 | Category | Sub-Category | Example/Test                                                 |
 |:--------:|:------------:|:------------------------------------------------------------:|
 | XRT      | hal          | [sysfs api](./xdev/dev/xrt/examples/hal/sysfs)               |
+| XRT      | hal          | [probe api](./xdev/dev/xrt/examples/hal/probe)               |
