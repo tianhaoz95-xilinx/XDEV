@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>xdev: darkside/kernel/copy/copy_kernel.cl File Reference</title>
+<title>xdev: darkside/kernel/vadd/vadd_kernel.cl File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -79,44 +79,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_9d2530cb26b705fdca3f800e838b02dd.html">darkside</a></li><li class="navelem"><a class="el" href="dir_693a1ebf06c03ab78f6ceb646414565c.html">kernel</a></li><li class="navelem"><a class="el" href="dir_ebeee46a2b40c332ce56cae9616268c2.html">copy</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_9d2530cb26b705fdca3f800e838b02dd.html">darkside</a></li><li class="navelem"><a class="el" href="dir_693a1ebf06c03ab78f6ceb646414565c.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4559622cea75320b5cbe521bc3a04702.html">vadd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">copy_kernel.cl File Reference</div>  </div>
+<div class="title">vadd_kernel.cl File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a89d6f95bae34f6be648f456abd1bb231"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copy__kernel_8cl.html#a89d6f95bae34f6be648f456abd1bb231">copy_kernel</a> (global char *src, global char *dest, const int copy_size)</td></tr>
-<tr class="separator:a89d6f95bae34f6be648f456abd1bb231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a393d410e1d55a97d45582eb380616867"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vadd__kernel_8cl.html#a393d410e1d55a97d45582eb380616867">vadd_kernel</a> (global const int *a, global const int *b, global int *c, const int n_elements)</td></tr>
+<tr class="separator:a393d410e1d55a97d45582eb380616867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a89d6f95bae34f6be648f456abd1bb231"></a>
+<a class="anchor" id="a393d410e1d55a97d45582eb380616867"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void copy_kernel </td>
+          <td class="memname">void vadd_kernel </td>
           <td>(</td>
-          <td class="paramtype">global char *&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
+          <td class="paramtype">global const int *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">global char *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype">global const int *&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">global int *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>copy_size</em>&#160;</td>
+          <td class="paramname"><em>n_elements</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -125,12 +131,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copy Kernel: it copies a fixed size of mempry from one address to another inside the kernel </p>
+<p>Vadd Kernel: vector addition kernel which adds vector a and vector b both of size n and saves the result in vector c </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">src</td><td>Pointer to the source memory address </td></tr>
-    <tr><td class="paramname">dest</td><td>Pointer to the destination memory address </td></tr>
-    <tr><td class="paramname">copy_size</td><td>Size of the memory to copy </td></tr>
+    <tr><td class="paramname">a</td><td>Pointer to vector a (addend 1) </td></tr>
+    <tr><td class="paramname">b</td><td>Pointer to vector b (addend 2) </td></tr>
+    <tr><td class="paramname">c</td><td>Pointer to vector c (result) </td></tr>
+    <tr><td class="paramname">n_elements</td><td>Size of the vectors </td></tr>
   </table>
   </dd>
 </dl>

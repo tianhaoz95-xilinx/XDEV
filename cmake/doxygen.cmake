@@ -10,6 +10,10 @@ if(${CMAKE_VERSION} VERSION_GREATER 3.9)
         set(DOXYGEN_EXCLUDE_PATTERNS */gtest/*)
         set(DOXYGEN_FILE_PATTERNS *.cl;*.cpp;*.cc;*.c;*.hpp;*.h)
         set(DOXYGEN_EXTENSION_MAPPING cl=C)
+        set(DOXYGEN_ENABLE_PREPROCESSING YES)
+        set(DOXYGEN_MACRO_EXPANSION YES)
+        set(DOXYGEN_EXPAND_ONLY_PREDEF YES)
+        set(DOXYGEN_PREDEFINED GEN_DOC)
 
         # note the option ALL which allows to build the docs together with the application
         doxygen_add_docs(doc_doxygen ALL

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['file_5fexist',['file_exist',['../filesystem__helper_8hpp.html#abcb9a23c28138e41d8a19eca285546fe',1,'filesystem_helper.hpp']]],
-  ['filesystem_5fhelper_2ehpp',['filesystem_helper.hpp',['../filesystem__helper_8hpp.html',1,'']]]
+  ['get_5fenvironment_5fvariable',['get_environment_variable',['../environment__helper_8hpp.html#aecf688e0e5f4f5ee61caf9f0c1578008',1,'environment_helper.hpp']]]
 ];
