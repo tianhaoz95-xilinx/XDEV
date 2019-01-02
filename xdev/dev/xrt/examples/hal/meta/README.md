@@ -1,0 +1,1 @@
+# This is a exmaple that utilize the hal meta data API
