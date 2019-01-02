@@ -12,11 +12,10 @@ using namespace std;
  * This is helper function for safely getting
  * environment variables
  * 
- * @param (input) \b name - the environment variable name
- * @param (return) the environment variable value
+ * @param [out] return the environment variable value
  */ 
-string get_environment_variable(string name) {
-    char* raw = getenv("XCLBIN_REPO"); /** @param raw char string from the system */
+string get_environment_variable(string name /**< [in] the environment variable name */) {
+    char* raw = getenv("XCLBIN_REPO");
     if (raw) {
         string environment_variable(raw);
     } else {

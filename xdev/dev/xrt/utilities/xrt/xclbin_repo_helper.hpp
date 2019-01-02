@@ -14,11 +14,10 @@ using namespace std;
  * executable is launched from build directory and try
  * to find darkside/farm using relative path.
  * 
- * @param (return) directory for
- * potential xclbin repository
+ * @param [out] return directory for potential xclbin repository
  */
 string search_xclbin_repository() {
-    string xclbin_repo; /** @param xclbin_repo test test test */
+    string xclbin_repo;
     try {
         xclbin_repo = get_environment_variable(XCLBIN_REPO_ENV);
     } catch (runtime_error& e) {

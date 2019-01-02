@@ -17,10 +17,10 @@ namespace fs = boost::filesystem;
 /**
  * Helper function to load xclbin onto device with hal API
  * 
- * @param (input) \b id - the id of the xclbin
- * @param (input) \b device_handle - the hal device handle 
+ * @param [out] return none
  */
-void load_xclbin_with_hal_api(string id, xclDeviceHandle device_handle) {
+void load_xclbin_with_hal_api(string id /**< [in] the id of the xclbin */, 
+                            xclDeviceHandle device_handle /**< [in] the hal device handle  */) {
     string xclbin_repo = search_xclbin_repository();
     fs::path xclbin_repo_root(xclbin_repo);
     fs::path xclbin_id(id);

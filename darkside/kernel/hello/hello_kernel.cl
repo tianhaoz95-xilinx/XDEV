@@ -8,7 +8,7 @@
  * only write "Hello World!" to the char*
  * input address
  */
-void hello_kernel(global char* msg /**<  pointer to the address where "Hello World!" should be written to*/) {
+void hello_kernel(global char* msg /**< [out] pointer to the address where "Hello World!" should be written to*/) {
     msg[0] = 'H';
     msg[1] = 'e';
     msg[2] = 'l';
