@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mystring',['MyString',['../classMyString.html',1,'']]]
+  ['bmc',['bmc',['../structbmc.html',1,'']]]
 ];

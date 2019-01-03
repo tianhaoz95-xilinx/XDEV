@@ -6,7 +6,9 @@ if(${CMAKE_VERSION} VERSION_GREATER 3.9)
     if (DOXYGEN_FOUND)
         # set input and output files
         set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs)
-        set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/xdev;${CMAKE_CURRENT_SOURCE_DIR}/darkside/kernel)
+        set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/xdev;
+                            ${CMAKE_CURRENT_SOURCE_DIR}/darkside/kernel;
+                            ${CMAKE_CURRENT_SOURCE_DIR}/third_party/XRT/src/runtime_src/driver/include)
         set(DOXYGEN_EXCLUDE_PATTERNS */gtest/*)
         set(DOXYGEN_FILE_PATTERNS *.cl;*.cpp;*.cc;*.c;*.hpp;*.h;DoxygenMain.txt)
         set(DOXYGEN_EXTENSION_MAPPING cl=C)

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['default_5fxclbin_5frepo',['DEFAULT_XCLBIN_REPO',['../config_8hpp.html#a04b7a27b52fd5383694ab939e9c45d4c',1,'config.hpp']]]
+  ['bmc',['bmc',['../structbmc.html',1,'']]],
+  ['buffer_20managment_20apis',['BUFFER MANAGMENT APIs',['../group__bufman.html',1,'']]]
 ];
