@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['search_5fxclbin_5frepository',['search_xclbin_repository',['../xclbin__repo__helper_8hpp.html#a214cd63d273601247231eb4efee47a60',1,'xclbin_repo_helper.hpp']]],
-  ['stream_5fxfer_5freq',['stream_xfer_req',['../structstream__xfer__req.html',1,'']]],
-  ['streams_5fpoll_5freq_5fcompletions',['streams_poll_req_completions',['../structstreams__poll__req__completions.html',1,'']]]
+  ['read_5fsysfs_5fhelper_2ehpp',['read_sysfs_helper.hpp',['../read__sysfs__helper_8hpp.html',1,'']]],
+  ['read_5fsysfs_5fwith_5fconfig',['read_sysfs_with_config',['../read__sysfs__helper_8hpp.html#a5fd6e363beb90e1b0b7f2376fb8ef519',1,'read_sysfs_helper.hpp']]]
 ];

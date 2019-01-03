@@ -3,6 +3,8 @@
 #include "xclhal2.h"
 #include "xclperf.h"
 #include "xclbin.h"
+#include "read_sysfs_helper.hpp"
+#include "visualize_debug_ip_layout_helper.hpp"
 #include "easylogging++.h"
 #include "hal/xclbin_helper.hpp"
 #include <iostream>
@@ -42,29 +44,31 @@ int main(int argc, char* argv[]) {
     load_xclbin_with_hal_api("alveo_u200_2018_3_1/hello/hello_kernel_hw_all.xclbin", device_handle);
     LOG(INFO) << "xclbin loaded";
     char data[MAX_DEBUG_IP_LAYOUT_SIZE];
-    LOG(INFO) << "Sysfs result buffer constructed ...";
-    xclSysfsQuery query;
     LOG(INFO) << "Querying device[0] sysfs ...";
-    query.size = MAX_DEBUG_IP_LAYOUT_SIZE;
-    int err = xclReadSysfs(device_handle, query, (void*)&data[0]);
-    LOG(INFO) << "Query device[0] sysfs finished ...";
-    if (err) {
-        LOG(ERROR) << "Casting sysfs result to debug ip layout failed";
-        throw runtime_error("Read sysfs failed");
+    LOG(INFO) << "Querying device[0] sysfs with fixed size ...";
+    read_sysfs_with_config(device_handle, false, "", "debug_ip_layout", MAX_DEBUG_IP_LAYOUT_SIZE, (void*)&data[0]);
+    LOG(INFO) << "Visualizing query result for Debug IP Layout ...";
+    visualize_debug_ip_layout((void*)&data[0]);
+    LOG(INFO) << "Querying device[0] sysfs with auto size detection ...";
+    read_sysfs_with_config(device_handle, true, "", "debug_ip_layout", 0, (void*)&data[0]);
+    LOG(INFO) << "Visualizing query result for Debug IP Layout ...";
+    visualize_debug_ip_layout((void*)&data[0]);
+    LOG(INFO) << "Querying device[0] sysfs with auto size detection and size as non-zero (should throw an error) ...";
+    bool expected_exception_caught = false;
+    try {
+        read_sysfs_with_config(device_handle, true, "", "debug_ip_layout", 10, (void*)&data[0]);
+    } catch (const runtime_error& e) {
+        string expected_error_msg = "Read sysfs failed";
+        if (string(e.what()) == expected_error_msg) {
+            LOG(INFO) << "Expected failure with error message: " << e.what();
+            expected_exception_caught = true;
+        } else {
+            LOG(INFO) << "Unexpected failure with error message: " << e.what() << ", expecting " << expected_error_msg;
+        }
     }
-    LOG(INFO) << "Casting sysfs result to debug ip layout ...";
-    debug_ip_layout* dbg = reinterpret_cast<debug_ip_layout*>(&data[0]);
-    LOG(INFO) << "Type casting finished";
-    LOG(INFO) << "Debug IP layout contains " << dbg->m_count << " entries";
-    for (unsigned i = 0; i < dbg->m_count; ++i) {
-        LOG(INFO) << "\t Showing debug_ip_layout[" << i << "]:";
-        LOG(INFO) << "\t\t m_type: " << (unsigned)dbg->m_debug_ip_data[i].m_type;
-        LOG(INFO) << "\t\t m_index: " << (unsigned)dbg->m_debug_ip_data[i].m_index;
-        LOG(INFO) << "\t\t m_properties: 0x" << hex << (unsigned)dbg->m_debug_ip_data[i].m_properties << dec;
-        LOG(INFO) << "\t\t m_major: " << (unsigned)dbg->m_debug_ip_data[i].m_major;
-        LOG(INFO) << "\t\t m_minor: " << (unsigned)dbg->m_debug_ip_data[i].m_minor;
-        LOG(INFO) << "\t\t m_base_address: 0x" << hex << (unsigned)dbg->m_debug_ip_data[i].m_base_address << dec;
-        LOG(INFO) << "\t\t m_name: " << (char*)dbg->m_debug_ip_data[i].m_name;
+    if (!expected_exception_caught) {
+        LOG(INFO) << "Query with read_all and size as non-zero should throw an exception, but non seen";
+        throw runtime_error("Expected exception not seen");
     }
     LOG(INFO) << "Closing device[0] ...";
     xclClose(device_handle);
