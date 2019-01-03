@@ -1,4 +1,7 @@
-/** @file */
+/**
+ * @file
+ * \ingroup hal_api_demo
+ */
 
 #include "xclhal2.h"
 #include "xclperf.h"
@@ -10,30 +13,28 @@ INITIALIZE_EASYLOGGINGPP
 using namespace std;
 
 /**
+ * \ingroup hal_api_demo
  * \section main Debug & Profile Device Info API demo
- * 
  * \author Tianhao Zhou
- * 
  * \date 1/2/2019
- * 
  * \version dev
- * 
  * \subsection intro Introduction
  * This code snipet uses xclGetDebugProfileDeviceInfo
  * with minimum amount of other APIs, making it a good
  * tool for developing and debugging the API.
- * 
- * \subsection steps Steps
+ * \subsection details Details
  *  -# Probe
  *  -# Open 1 device at a time
  *  -# Get debug profile device info
  *  -# Print the info
  *  -# Close device
+ * \subsection future Future Plans
+ * none
  */
-int main(int argc, char* argv[]) {
+int debug_profile_device_info_demo(int argc, char* argv[]) {
     /**
      * \note
-     * START_EASYLOGGINGPP is the entry point 
+     * \b START_EASYLOGGINGPP is the entry point 
      * to easyloggingpp which should be called 
      * only once before any logging
      */
@@ -77,4 +78,8 @@ int main(int argc, char* argv[]) {
         LOG(INFO) << "Finished closing device[" << i << "]";
     }
     return 0;
+}
+
+int main(int argc, char* argv[]) {
+    return debug_profile_device_info_demo(argc, argv);
 }

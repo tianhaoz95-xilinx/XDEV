@@ -1,1 +1,1 @@
-package_add_example(xrt/hal probe main.cpp)
+package_add_example(xrt/hal probe probe_demo.cpp)

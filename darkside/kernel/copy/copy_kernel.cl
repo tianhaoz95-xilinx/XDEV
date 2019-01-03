@@ -4,6 +4,7 @@
     kernel __attribute__((reqd_work_group_size(1, 1, 1)))
 #endif
 /**
+ * \ingroup kernel_src
  * Copy Kernel: it copies a fixed size of mempry from one address to another inside the kernel
  */
 void copy_kernel(global char* src /**< [in] Pointer to the source memory address */, 

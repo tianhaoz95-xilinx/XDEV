@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hal_20api_20demos',['hal API demos',['../group__hal__api__demo.html',1,'']]]
+  ['kernel_20source_20code',['Kernel Source Code',['../group__kernel__src.html',1,'']]]
 ];

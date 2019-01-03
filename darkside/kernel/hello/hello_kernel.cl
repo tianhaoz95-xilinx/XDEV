@@ -4,6 +4,7 @@
     kernel __attribute__((reqd_work_group_size(1, 1, 1)))
 #endif
 /**
+ * \ingroup kernel_src
  * This is the hello world kernel which
  * only write "Hello World!" to the char*
  * input address

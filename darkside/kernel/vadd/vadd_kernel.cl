@@ -5,6 +5,7 @@
 #endif
 
 /**
+ * \ingroup kernel_src
  * Vadd Kernel: vector addition kernel which adds vector a and vector b
  * both of size n and saves the result in vector c
  */

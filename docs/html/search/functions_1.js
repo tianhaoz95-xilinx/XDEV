@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['file_5fexist',['file_exist',['../filesystem__helper_8hpp.html#abcb9a23c28138e41d8a19eca285546fe',1,'filesystem_helper.hpp']]]
+  ['debug_5fprofile_5fdevice_5finfo_5fdemo',['debug_profile_device_info_demo',['../group__hal__api__demo.html#ga58045620cf4268e243ae8c6329cf955d',1,'debug_profile_device_info_demo.cpp']]]
 ];

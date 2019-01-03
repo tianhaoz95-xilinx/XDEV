@@ -1,7 +1,4 @@
-/**
- * @file 
- * \ingroup hal_api_demo
- */
+/** @file */
 
 #include "xclhal2.h"
 #include "xclperf.h"
@@ -17,6 +14,7 @@ INITIALIZE_EASYLOGGINGPP
 using namespace std;
 
 /**
+ * \ingroup hal_api_demo
  * Example to use sysfs query API from xclhal2.h
  * 
  * Steps in this code:
@@ -26,7 +24,7 @@ using namespace std;
  *  -# read debug_ip_layout using hal sysfs api
  *  -# log debug_ip_layout
  */
-int main(int argc, char* argv[]) {
+int sysfs_demo(int argc, char* argv[]) {
     /**
      * \b START_EASYLOGGINGPP is the entry point to easyloggingpp
      * which only needs to be called once before any logging
@@ -77,4 +75,8 @@ int main(int argc, char* argv[]) {
     xclClose(device_handle);
     LOG(INFO) << "device[0] closed";
     return 0;
+}
+
+int main(int argc, char* argv[]) {
+    return sysfs_demo(argc, argv);
 }

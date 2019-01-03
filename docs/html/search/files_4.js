@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_2ecpp',['main.cpp',['../debug__profile__device__info_2main_8cpp.html',1,'']]],
-  ['main_2ecpp',['main.cpp',['../probe_2main_8cpp.html',1,'']]]
+  ['hello_5fkernel_2ecl',['hello_kernel.cl',['../hello__kernel_8cl.html',1,'']]]
 ];

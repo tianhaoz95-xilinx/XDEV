@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>xdev: hal API demos</title>
+<title>xdev: Demos for hal APIs</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,18 +76,110 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="summary">
-<a href="#files">Files</a>  </div>
+<a href="#files">Files</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">hal API demos</div>  </div>
+<div class="title">Demos for hal APIs</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:sysfs__demo_8cpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sysfs__demo_8cpp.html">sysfs_demo.cpp</a></td></tr>
+<tr class="memitem:debug__profile__device__info__demo_8cpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__profile__device__info__demo_8cpp.html">debug_profile_device_info_demo.cpp</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga58045620cf4268e243ae8c6329cf955d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hal__api__demo.html#ga58045620cf4268e243ae8c6329cf955d">debug_profile_device_info_demo</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:ga58045620cf4268e243ae8c6329cf955d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadfa50500e1075c9fabbecbf1c06fdebd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hal__api__demo.html#gadfa50500e1075c9fabbecbf1c06fdebd">sysfs_demo</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:gadfa50500e1075c9fabbecbf1c06fdebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>This group of demos is dedicated to making use of a single hal API with minimum amount of other hal API usage involved, making it easier to focus on developing or debugging that one API. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga58045620cf4268e243ae8c6329cf955d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int debug_profile_device_info_demo </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<h1><a class="anchor" id="main"></a>
+Debug &amp; Profile Device Info API demo</h1>
+<dl class="section author"><dt>Author</dt><dd>Tianhao Zhou </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>1/2/2019 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>dev </dd></dl>
+<h2><a class="anchor" id="intro"></a>
+Introduction</h2>
+<p>This code snipet uses xclGetDebugProfileDeviceInfo with minimum amount of other APIs, making it a good tool for developing and debugging the API. </p>
+<h2><a class="anchor" id="details"></a>
+Details</h2>
+<ol type="1">
+<li>Probe</li>
+<li>Open 1 device at a time</li>
+<li>Get debug profile device info</li>
+<li>Print the info</li>
+<li>Close device </li>
+</ol>
+<h2><a class="anchor" id="future"></a>
+Future Plans</h2>
+<p>none </p>
+<dl class="section note"><dt>Note</dt><dd><b>START_EASYLOGGINGPP</b> is the entry point to easyloggingpp which should be called only once before any logging</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gadfa50500e1075c9fabbecbf1c06fdebd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sysfs_demo </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Example to use sysfs query API from <a class="el" href="xclhal2_8h_source.html">xclhal2.h</a></p>
+<p>Steps in this code:</p><ol type="1">
+<li>probe device</li>
+<li>open device</li>
+<li>load xclbin</li>
+<li>read <a class="el" href="structdebug__ip__layout.html">debug_ip_layout</a> using hal sysfs api</li>
+<li>log <a class="el" href="structdebug__ip__layout.html">debug_ip_layout</a> </li>
+</ol>
+<p><b>START_EASYLOGGINGPP</b> is the entry point to easyloggingpp which only needs to be called once before any logging</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

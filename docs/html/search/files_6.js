@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sysfs_5fdemo_2ecpp',['sysfs_demo.cpp',['../sysfs__demo_8cpp.html',1,'']]]
+  ['read_5fsysfs_5fhelper_2ehpp',['read_sysfs_helper.hpp',['../read__sysfs__helper_8hpp.html',1,'']]]
 ];

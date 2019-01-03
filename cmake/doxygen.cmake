@@ -10,7 +10,7 @@ if(${CMAKE_VERSION} VERSION_GREATER 3.9)
                             ${CMAKE_CURRENT_SOURCE_DIR}/darkside/kernel;
                             ${CMAKE_CURRENT_SOURCE_DIR}/third_party/XRT/src/runtime_src/driver/include)
         set(DOXYGEN_EXCLUDE_PATTERNS */gtest/*)
-        set(DOXYGEN_FILE_PATTERNS *.cl;*.cpp;*.cc;*.c;*.hpp;*.h;DoxygenMain.txt)
+        set(DOXYGEN_FILE_PATTERNS *.cl;*.cpp;*.cc;*.c;*.hpp;*.h;DoxygenMain.txt;DoxygenConfig.txt)
         set(DOXYGEN_EXTENSION_MAPPING cl=C)
         set(DOXYGEN_ENABLE_PREPROCESSING YES)
         set(DOXYGEN_MACRO_EXPANSION YES)

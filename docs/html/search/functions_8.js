@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['test',['TEST',['../debug__profile__device__info_2test_8cpp.html#a4438a2ad3930edfb0ddf54150b5dbe09',1,'TEST(XRT_HAL, Debug_Profile_Device_Info):&#160;test.cpp'],['../probe_2test_8cpp.html#a62a9e840b166d0d1f56e3c30a9fa6135',1,'TEST(XRT_HAL, Probe):&#160;test.cpp']]]
+  ['search_5fxclbin_5frepository',['search_xclbin_repository',['../xclbin__repo__helper_8hpp.html#a214cd63d273601247231eb4efee47a60',1,'xclbin_repo_helper.hpp']]],
+  ['sysfs_5fdemo',['sysfs_demo',['../group__hal__api__demo.html#gadfa50500e1075c9fabbecbf1c06fdebd',1,'sysfs_demo.cpp']]]
 ];
