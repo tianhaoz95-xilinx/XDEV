@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
     int err = xclReadSysfs(device_handle, query, (void*)&data[0]);
     LOG(INFO) << "Query device[0] sysfs finished ...";
     if (err) {
-        LOG(ERROR) << "Casting sysfs result to debug ip layout ...";
+        LOG(ERROR) << "Casting sysfs result to debug ip layout failed";
         throw runtime_error("Read sysfs failed");
     }
     LOG(INFO) << "Casting sysfs result to debug ip layout ...";
