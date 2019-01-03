@@ -7,7 +7,7 @@
 #include "easylogging++.h"
 #include "filesystem_helper.hpp"
 #include "environment_helper.hpp"
-#include "xrt/xclbin_repo_helper.hpp"
+#include "xclbin_repo_helper.hpp"
 #include <iostream>
 #include <boost/filesystem.hpp>
 

@@ -31,8 +31,10 @@ TEST(XRT_HAL, Debug_Profile_Device_Info) {
     }
     unsigned int device_index = (unsigned int)info.device_index;
     unsigned int user_instance = (unsigned int)info.user_instance;
+    unsigned int device_type = (unsigned int)info.device_type;
     unsigned int mgmt_instance = (unsigned int)info.mgmt_instance;
     unsigned int nifd_instance = (unsigned int)info.nifd_instance;
+    EXPECT_EQ(device_type, 2);
     EXPECT_EQ(device_index, i);
     EXPECT_GE(user_instance, 0);
     EXPECT_GE(mgmt_instance, 0);

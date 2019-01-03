@@ -1,11 +1,11 @@
-<map id="xdev/dev/xrt/utilities/hal/xclbin_helper.hpp" name="xdev/dev/xrt/utilities/hal/xclbin_helper.hpp">
+<map id="xdev/dev/xrt/examples/utilities/xclbin_helper.hpp" name="xdev/dev/xrt/examples/utilities/xclbin_helper.hpp">
 <area shape="rect" id="node2" href="$xclhal2_8h_source.html" title="xclhal2.h" alt="" coords="267,95,341,121"/>
 <area shape="rect" id="node11" href="$filesystem__helper_8hpp.html" title="filesystem_helper.hpp" alt="" coords="623,95,772,121"/>
 <area shape="rect" id="node13" href="$environment__helper_8hpp.html" title="environment_helper.hpp" alt="" coords="439,95,599,121"/>
-<area shape="rect" id="node14" href="$xclbin__repo__helper_8hpp.html" title="xrt/xclbin_repo_helper.hpp" alt="" coords="847,95,1022,121"/>
+<area shape="rect" id="node14" href="$xclbin__repo__helper_8hpp.html" title="xclbin_repo_helper.hpp" alt="" coords="847,95,1001,121"/>
 <area shape="rect" id="node5" href="$xclbin_8h_source.html" title="xclbin.h" alt="" coords="341,169,408,196"/>
 <area shape="rect" id="node7" href="$xclperf_8h_source.html" title="xclperf.h" alt="" coords="79,244,151,271"/>
 <area shape="rect" id="node8" href="$xcl__app__debug_8h_source.html" title="xcl_app_debug.h" alt="" coords="5,169,125,196"/>
 <area shape="rect" id="node9" href="$xclerr_8h_source.html" title="xclerr.h" alt="" coords="201,169,266,196"/>
-<area shape="rect" id="node15" href="$config_8hpp.html" title="xrt/config.hpp" alt="" coords="884,169,985,196"/>
+<area shape="rect" id="node15" href="$config_8hpp.html" title="config.hpp" alt="" coords="883,169,965,196"/>
 </map>

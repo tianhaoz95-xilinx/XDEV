@@ -4,6 +4,10 @@
 #define __XRT_CONFIG__
 
 /**
+ * \defgroup hal_api_demo hal API demos
+ */
+
+/**
  * The default path to the xclbin repository:
  * 
  * If no path to the xclbin repository has 

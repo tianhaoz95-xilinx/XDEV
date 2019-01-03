@@ -6,7 +6,7 @@
 #include "xclhal2.h"
 #include "xclperf.h"
 #include "xclbin.h"
-#include "xrt/config.hpp"
+#include "config.hpp"
 #include "easylogging++.h"
 #include <iostream>
 

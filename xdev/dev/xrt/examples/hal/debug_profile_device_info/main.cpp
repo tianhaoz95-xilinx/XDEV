@@ -59,11 +59,13 @@ int main(int argc, char* argv[]) {
         unsigned int user_instance = (unsigned int)info.user_instance;
         unsigned int mgmt_instance = (unsigned int)info.mgmt_instance;
         unsigned int nifd_instance = (unsigned int)info.nifd_instance;
+        unsigned int device_type = (unsigned int)info.device_type;
         string device_name = (string)info.device_name;
         string sysfs_name = (string)info.sysfs_name;
         string nifd_name = (string)info.nifd_name;
         LOG(INFO) << "\t Showing device[" << i << "] info:";
         LOG(INFO) << "\t\t Device Index: " << device_index;
+        LOG(INFO) << "\t\t Device Type: " << device_type;
         LOG(INFO) << "\t\t User Instance: " << user_instance;
         LOG(INFO) << "\t\t NIFD Instance: " << nifd_instance;
         LOG(INFO) << "\t\t Management Instance: " << mgmt_instance;

@@ -4,7 +4,7 @@
 #define __XCLBIN_REPO_HELPER__
 
 #include <iostream>
-#include "xrt/config.hpp"
+#include "config.hpp"
 
 using namespace std;
 

@@ -1,4 +1,7 @@
-/** @file */
+/**
+ * @file 
+ * \ingroup hal_api_demo
+ */
 
 #include "xclhal2.h"
 #include "xclperf.h"
@@ -6,7 +9,7 @@
 #include "read_sysfs_helper.hpp"
 #include "visualize_debug_ip_layout_helper.hpp"
 #include "easylogging++.h"
-#include "hal/xclbin_helper.hpp"
+#include "xclbin_helper.hpp"
 #include <iostream>
 
 INITIALIZE_EASYLOGGINGPP

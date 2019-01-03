@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['performance_20monitoring_20operations',['PERFORMANCE MONITORING OPERATIONS',['../group__perfmon.html',1,'']]]
+  ['hal_20api_20demos',['hal API demos',['../group__hal__api__demo.html',1,'']]]
 ];
