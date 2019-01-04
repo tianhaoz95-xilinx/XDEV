@@ -3,8 +3,6 @@ language: cpp
 matrix:
   include:
     - dist: xenial
-    - compiler: g++
-    - os: linux
       addons:
         apt:
           sources:
