@@ -71,7 +71,7 @@ install:
 script: 
   - cd ..
   
-  - sed -i -e 's/TOKEN/$COVERALL_TOKEN/g' ./.overalls.yml
+  - sed -i -e 's/TOKEN/$COVERALL_TOKEN/g' ./.coveralls.yml
 
   - |
     mkdir build && \
