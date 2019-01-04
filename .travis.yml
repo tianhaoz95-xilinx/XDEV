@@ -1,9 +1,52 @@
 language: cpp
 
-install:
-  - |
-    ./third_party/XRT/src/runtime_src/tools/scripts/xrtdeps.sh
+before_install:
+  - sudo apt-get install -y cmake
+  - sudo apt-get install -y cppcheck
+  - sudo apt-get install -y curl
+  - sudo apt-get install -y dkms
+  - sudo apt-get install -y g++
+  - sudo apt-get install -y gcc
+  - sudo apt-get install -y gdb
+  - sudo apt-get install -y git
+  - sudo apt-get install -y gnuplot
+  - sudo apt-get install -y libboost-dev
+  - sudo apt-get install -y libboost-filesystem-dev
+  - sudo apt-get install -y libboost-program-options-dev
+  - sudo apt-get install -y libdrm-dev
+  - sudo apt-get install -y libjpeg-dev
+  - sudo apt-get install -y libgtest-dev
+  - sudo apt-get install -y libncurses5-dev
+  - sudo apt-get install -y libopencv-core-dev
+  - sudo apt-get install -y libpng-dev
+  - sudo apt-get install -y libprotoc-dev
+  - sudo apt-get install -y libtiff5-dev
+  - sudo apt-get install -y libxml2-dev
+  - sudo apt-get install -y libyaml-dev
+  - sudo apt-get install -y linux-libc-dev
+  - sudo apt-get install -y lm-sensors
+  - sudo apt-get install -y lsb
+  - sudo apt-get install -y make
+  - sudo apt-get install -y ocl-icd-dev
+  - sudo apt-get install -y ocl-icd-libopencl1
+  - sudo apt-get install -y opencl-headers
+  - sudo apt-get install -y ocl-icd-opencl-dev
+  - sudo apt-get install -y perl
+  - sudo apt-get install -y python
+  - sudo apt-get install -y python-enum34
+  - sudo apt-get install -y python-cffi
+  - sudo apt-get install -y pciutils
+  - sudo apt-get install -y pkg-config
+  - sudo apt-get install -y protobuf-compiler
+  - sudo apt-get install -y python3-sphinx
+  - sudo apt-get install -y python3-sphinx-rtd-theme
+  - sudo apt-get install -y sphinx-common
+  - sudo apt-get install -y strace
+  - sudo apt-get install -y unzip
+  - sudo apt-get install -y uuid
+  - sudo apt-get install -y doxygen
 
+install:
   - |
     mkdir deps_build && \
     cd deps_build && \
