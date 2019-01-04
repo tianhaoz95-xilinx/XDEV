@@ -23,6 +23,6 @@ Examples make assumption that they are launched from build directory and will se
 
 | Kernel                                 |
 |:--------------------------------------:|
-| [Copy Kernel](./darkside/kernel/copy/) |
+| [./darkside/kernel/copy/] |
 
 ### Need a test?
