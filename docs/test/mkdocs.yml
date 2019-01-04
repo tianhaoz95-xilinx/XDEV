@@ -1,0 +1,4 @@
+site_name: My Docs
+docs_dir: ../../xdev/test
+nav:
+    - Home: README.md
