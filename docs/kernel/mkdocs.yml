@@ -1,4 +1,23 @@
-site_name: My Docs
+site_name: Kernel Documentation
 docs_dir: ../../darkside
 nav:
     - Home: README.md
+    - Kernel:
+        - Overview: kernel/README.md
+        - Copy Kernel: kernel/copy/README.md
+        - Hello Kernel: kernel/hello/README.md
+        - Vector Addition Kernel: kernel/vadd/README.md
+    - Farm:
+        - Overview: farm/README.md
+        - Make Rules: farm/rules/README.md
+        - Alveo U200 2018.3:
+            - Overview: farm/alveo_u200_2018_3_1/README.md
+            - Copy Kernel (Debug & Profile): farm/alveo_u200_2018_3_1/copy/README.md
+            - Hello Kernel (Debug & Profile): farm/alveo_u200_2018_3_1/hello/README.md
+            - Hello Kernel (Debug & Profile & 3 Compute Units): farm/alveo_u200_2018_3_1/hello_triple_compute_unit/README.md
+            - Vector Addition Kernel (Debug & Profile): farm/alveo_u200_2018_3_1/vadd/README.md
+        - Alveo U250 2018.3:
+            - Overview: farm/alveo_u250_2018_3_1/README.md
+            - Copy Kernel (Debug & Profile): farm/alveo_u250_2018_3_1/copy/README.md
+            - Hello Kernel (Debug & Profile): farm/alveo_u250_2018_3_1/hello/README.md
+            - Vector Addition Kernel (Debug & Profile): farm/alveo_u250_2018_3_1/vadd/README.md
