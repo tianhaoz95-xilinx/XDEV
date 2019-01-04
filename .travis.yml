@@ -2,6 +2,9 @@ language: cpp
 
 install:
   - |
+    ../third_party/XRT/src/runtime_src/tools/scripts/xrtdeps.sh
+
+  - |
     mkdir deps_build && \
     cd deps_build && \
     cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../third_party/XRT/src && \
