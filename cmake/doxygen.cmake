@@ -23,6 +23,7 @@ if(${CMAKE_VERSION} VERSION_GREATER 3.9)
             ${PROJECT_SOURCE_DIR}
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
             COMMENT "Generating developer documentation ...")
+        add_dependencies(docs developer_doc)
     else (DOXYGEN_FOUND)
         message("Doxygen need to be installed to generate the doxygen documentation")
     endif (DOXYGEN_FOUND)

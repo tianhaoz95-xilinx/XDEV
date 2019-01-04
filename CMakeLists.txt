@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD 14)
 project(xdev)
 
 include(cmake/googletest.cmake)
+include(cmake/docs.cmake)
 include(cmake/doxygen.cmake)
 include(cmake/xrt.cmake)
 include(cmake/logger.cmake)
