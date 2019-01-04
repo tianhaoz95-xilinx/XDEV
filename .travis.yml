@@ -68,8 +68,8 @@ install:
 
 script: 
   - |
+    cd .. && \
     ls && \
-    ls ./deps_build && \
     mkdir build && \
     cd build && \
     source ../deps_build/opt/xilinx/xrt/setup.sh && \
