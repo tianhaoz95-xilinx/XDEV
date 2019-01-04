@@ -9,7 +9,7 @@ Test field for XRT development
 
 [For Developers](https://tianhaoz95-xilinx.github.io/XDEV/html/index.html)
 
-### Need an example
+### Need an demo code snipet?
 
 Examples make assumption that they are launched from build directory and will search data files using relative path if none is specified.
 
