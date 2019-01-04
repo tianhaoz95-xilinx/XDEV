@@ -3,12 +3,6 @@
 #ifndef GEN_DOC
     kernel __attribute__((reqd_work_group_size(1, 1, 1)))
 #endif
-/**
- * \ingroup kernel_src
- * This is the hello world kernel which
- * only write "Hello World!" to the char*
- * input address
- */
  /**
  * \ingroup kernel_src
  * \section hello_kernel Hello Kernel (OpenCL C)

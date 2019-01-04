@@ -2,7 +2,7 @@
 ```cpp
 /**
  * \ingroup kernel_src
- * \section copy_kernel Copy Kernel (OpenCL C)
+ * \section my_kernel My Kernel (OpenCL C/CPP)
  * \author John Doe
  * \date 1/1/2019
  * \version final/dev/etc

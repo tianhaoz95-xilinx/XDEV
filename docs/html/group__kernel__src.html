@@ -183,7 +183,6 @@ Availability</h2>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This is the hello world kernel which only write "Hello World!" to the char* input address</p>
 <h1><a class="anchor" id="hello_kernel"></a>
 Hello Kernel (OpenCL C)</h1>
 <dl class="section author"><dt>Author</dt><dd>Tianhao Zhou </dd></dl>
@@ -225,7 +224,7 @@ Availability</h2>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="hello__kernel_8cl_source.html#l00037">37</a> of file <a class="el" href="hello__kernel_8cl_source.html">hello_kernel.cl</a>.</p>
+<p>Definition at line <a class="el" href="hello__kernel_8cl_source.html#l00031">31</a> of file <a class="el" href="hello__kernel_8cl_source.html">hello_kernel.cl</a>.</p>
 
 </div>
 </div>
@@ -264,7 +263,34 @@ Availability</h2>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Vadd Kernel: vector addition kernel which adds vector a and vector b both of size n and saves the result in vector c </p>
+<h1><a class="anchor" id="vadd_kernel"></a>
+Vadd Kernel (OpenCL C)</h1>
+<dl class="section author"><dt>Author</dt><dd>Tianhao Zhou </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>1/3/2019 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>final </dd></dl>
+<h2><a class="anchor" id="intro"></a>
+Introduction</h2>
+<p>Vector addition kernel which adds vector a and vector b both of size n and saves the result in vector c. </p>
+<h2><a class="anchor" id="details"></a>
+Details</h2>
+<p>It is a simple for loop without any optimization. </p>
+<h2><a class="anchor" id="future"></a>
+Future Plans</h2>
+<p>none </p>
+<h2><a class="anchor" id="availability"></a>
+Availability</h2>
+<ul>
+<li>Alveo U200 2018.3.1<ul>
+<li>profile counter</li>
+<li>profile trace</li>
+</ul>
+</li>
+<li>Alveo U250 2018.3.1<ul>
+<li>profile counter</li>
+<li>profile trace </li>
+</ul>
+</li>
+</ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Pointer to vector a (addend 1) </td></tr>
@@ -275,7 +301,7 @@ Availability</h2>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="vadd__kernel_8cl_source.html#l00012">12</a> of file <a class="el" href="vadd__kernel_8cl_source.html">vadd_kernel.cl</a>.</p>
+<p>Definition at line <a class="el" href="vadd__kernel_8cl_source.html#l00027">27</a> of file <a class="el" href="vadd__kernel_8cl_source.html">vadd_kernel.cl</a>.</p>
 
 </div>
 </div>
