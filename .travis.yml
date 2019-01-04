@@ -75,4 +75,5 @@ script:
     cd build && \
     source ../deps_build/opt/xilinx/xrt/setup.sh && \
     cmake .. && \
-    make probe
+    make && \
+    make docs
