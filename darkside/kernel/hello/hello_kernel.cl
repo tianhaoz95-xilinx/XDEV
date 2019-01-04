@@ -9,6 +9,31 @@
  * only write "Hello World!" to the char*
  * input address
  */
+ /**
+ * \ingroup kernel_src
+ * \section hello_kernel Hello Kernel (OpenCL C)
+ * \author Tianhao Zhou
+ * \date 1/3/2019
+ * \version final
+ * \subsection intro Introduction
+ * This kernel is hello world.
+ * \subsection details Details
+ * It takes a char pointer and write 
+ * Hello World! to it
+ * \subsection future Future Plans
+ * none
+ * \subsection availability Availability
+ *  - Alveo U200 2018.3.1
+ *      - profile counter
+ *      - profile trace
+ *  - Alveo U200 2018.3.1
+ *      - 3 compute units
+ *      - profile counter
+ *      - profile trace
+ *  - Alveo U250 2018.3.1
+ *      - profile counter
+ *      - profile trace
+ */
 void hello_kernel(global char* msg /**< [out] pointer to the address where "Hello World!" should be written to*/) {
     msg[0] = 'H';
     msg[1] = 'e';
