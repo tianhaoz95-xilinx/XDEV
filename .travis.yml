@@ -65,6 +65,12 @@ install:
     mkdir deps_build && \
     cd deps_build && \
     cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_STANDARD=11 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../third_party/XRT/src && \
-    make -j4 DESTDIR=$PWD install
+    make DESTDIR=$PWD install
 
-script: mkdir build && cd build && cmake ..
+script: 
+  -|
+    mkdir build && \
+    cd build && \
+    source ../deps_build/opt/xilinx/xrt/setup.sh && \
+    cmake .. && \
+    make probe
