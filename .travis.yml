@@ -71,9 +71,7 @@ install:
 script: 
   - cd ..
   
-  - echo -e "\nrepo_token: $COVERALL_TOKEN" >> .coveralls.yml
-
-  - ./configure --enable-gcov && make && make check
+  - sed -i -e 's/TOKEN/$COVERALL_TOKEN/g' ./.overalls.yml
 
   - |
     mkdir build && \
