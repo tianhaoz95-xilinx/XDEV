@@ -2,7 +2,7 @@ language: cpp
 
 install:
   - |
-    ../third_party/XRT/src/runtime_src/tools/scripts/xrtdeps.sh
+    ./third_party/XRT/src/runtime_src/tools/scripts/xrtdeps.sh
 
   - |
     mkdir deps_build && \
