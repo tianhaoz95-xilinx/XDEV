@@ -9,7 +9,7 @@ Test field for XRT development
 
 [For Developers](https://tianhaoz95-xilinx.github.io/XDEV/html/index.html)
 
-### Need an demo code snipet?
+### Need a demo code snipet?
 
 Examples make assumption that they are launched from build directory and will search data files using relative path if none is specified.
 
@@ -20,3 +20,5 @@ Examples make assumption that they are launched from build directory and will se
 | XRT      | hal          | [debug profile device info api](./xdev/dev/xrt/examples/hal/debug_profile_device_info) |
 
 ### Need a kernel?
+
+### Need a test?
