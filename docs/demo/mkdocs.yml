@@ -2,3 +2,6 @@ site_name: My Docs
 docs_dir: ../../xdev/dev
 nav:
     - Home: xrt/examples/hal/sysfs/README.md
+    - HAL:
+        - TEST:
+            - TEST: xrt/examples/hal/README.md

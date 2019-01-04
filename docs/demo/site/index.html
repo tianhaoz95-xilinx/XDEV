@@ -32,11 +32,39 @@
 
                 <!-- Collapsed navigation -->
                 <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" href="xrt/examples/hal/sysfs/">My Docs</a>
                 </div>
 
                 <!-- Expanded navigation -->
                 <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="xrt/examples/hal/sysfs/">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HAL <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">TEST</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="xrt/examples/hal/">TEST</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -164,5 +192,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-01-04 02:19:01
+Build Date UTC : 2019-01-04 02:28:03
 -->
