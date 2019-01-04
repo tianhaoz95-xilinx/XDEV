@@ -62,4 +62,4 @@ install:
     cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_STANDARD=11 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../third_party/XRT/src && \
     make -j4 DESTDIR=$PWD install
 
-script: mkdir build && cd build
+script: mkdir build && cd build && cmake ..
