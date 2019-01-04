@@ -1,4 +1,4 @@
 site_name: My Docs
-docs_dir: ../../xdev
+docs_dir: ../../xdev/dev
 nav:
-    - Home: dev/xrt/examples/hal/sysfs/README.md
+    - Home: xrt/examples/hal/sysfs/README.md

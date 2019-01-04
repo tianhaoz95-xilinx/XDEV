@@ -1,1 +1,0 @@
-package_add_test(xrt/hal probe_test test.cpp)

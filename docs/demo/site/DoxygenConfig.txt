@@ -1,7 +1,0 @@
-/**
- * \defgroup hal_api_demo Demos for hal APIs
- * This group of demos is dedicated to making use
- * of a single hal API with minimum amount of other
- * hal API usage involved, making it easier to
- * focus on developing or debugging that one API.
- */

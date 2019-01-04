@@ -1,1 +1,0 @@
-package_add_test(xrt/hal debug_profile_device_info_test test.cpp)
