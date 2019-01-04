@@ -59,6 +59,7 @@ before_install:
   - sudo apt-get install -y uuid
   - sudo apt-get install -y doxygen
   - sudo apt-get install -y graphviz
+  - pip install --user cpp-coveralls
 
 install:
   - |
@@ -68,14 +69,22 @@ install:
     make DESTDIR=$PWD install
 
 script: 
+  - cd ..
+  
+  > echo "repo_token: $COVERALL_TOKEN" >> .coveralls.yml
+
+  - ./configure --enable-gcov && make && make check
+
   - |
-    cd .. && \
-    ls && \
     mkdir build && \
     cd build && \
-    source ../deps_build/opt/xilinx/xrt/setup.sh && \
-    cmake .. && \
-    make probe
+    source ../deps_build/opt/xilinx/xrt/setup.sh
   
-  - |
-    make developer_doc
+  - cmake ..
+
+  - make probe
+  
+  - make developer_doc
+
+after_success:
+  - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
