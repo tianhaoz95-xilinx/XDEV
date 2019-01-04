@@ -5,7 +5,7 @@ if(${CMAKE_VERSION} VERSION_GREATER 3.9)
     find_package(Doxygen REQUIRED dot OPTIONAL_COMPONENTS mscgen dia)
     if (DOXYGEN_FOUND)
         # set input and output files
-        set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs)
+        set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/developer)
         set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/xdev;
                             ${CMAKE_CURRENT_SOURCE_DIR}/darkside/kernel;
                             ${CMAKE_CURRENT_SOURCE_DIR}/third_party/XRT/src/runtime_src/driver/include)

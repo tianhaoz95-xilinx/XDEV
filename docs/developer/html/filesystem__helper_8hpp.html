@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>xdev: xdev/dev/utilities/environment_helper.hpp File Reference</title>
+<title>xdev: xdev/dev/utilities/filesystem_helper.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,62 +88,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">environment_helper.hpp File Reference</div>  </div>
+<div class="title">filesystem_helper.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;easylogging++.h&quot;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for environment_helper.hpp:</div>
+Include dependency graph for filesystem_helper.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="environment__helper_8hpp__incl.png" border="0" usemap="#xdev_2dev_2utilities_2environment__helper_8hpp" alt=""/></div>
+<div class="center"><img src="filesystem__helper_8hpp__incl.png" border="0" usemap="#xdev_2dev_2utilities_2filesystem__helper_8hpp" alt=""/></div>
+<map name="xdev_2dev_2utilities_2filesystem__helper_8hpp" id="xdev_2dev_2utilities_2filesystem__helper_8hpp">
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="environment__helper_8hpp__dep__incl.png" border="0" usemap="#xdev_2dev_2utilities_2environment__helper_8hppdep" alt=""/></div>
-<map name="xdev_2dev_2utilities_2environment__helper_8hppdep" id="xdev_2dev_2utilities_2environment__helper_8hppdep">
+<div class="center"><img src="filesystem__helper_8hpp__dep__incl.png" border="0" usemap="#xdev_2dev_2utilities_2filesystem__helper_8hppdep" alt=""/></div>
+<map name="xdev_2dev_2utilities_2filesystem__helper_8hppdep" id="xdev_2dev_2utilities_2filesystem__helper_8hppdep">
 <area shape="rect" id="node2" href="xclbin__helper_8hpp.html" title="xdev/dev/xrt/examples\l/utilities/xclbin_helper.hpp" alt="" coords="9,95,181,136"/>
 <area shape="rect" id="node3" href="sysfs__demo_8cpp.html" title="xdev/dev/xrt/examples\l/hal/sysfs/sysfs_demo.cpp" alt="" coords="5,184,184,225"/>
 </map>
 </div>
 </div>
-<p><a href="environment__helper_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="filesystem__helper_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aecf688e0e5f4f5ee61caf9f0c1578008"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="environment__helper_8hpp.html#aecf688e0e5f4f5ee61caf9f0c1578008">get_environment_variable</a> (string name)</td></tr>
-<tr class="separator:aecf688e0e5f4f5ee61caf9f0c1578008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcb9a23c28138e41d8a19eca285546fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="filesystem__helper_8hpp.html#abcb9a23c28138e41d8a19eca285546fe">file_exist</a> (const string &amp;filename)</td></tr>
+<tr class="separator:abcb9a23c28138e41d8a19eca285546fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aecf688e0e5f4f5ee61caf9f0c1578008"></a>
+<a class="anchor" id="abcb9a23c28138e41d8a19eca285546fe"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">string get_environment_variable </td>
+          <td class="memname">bool file_exist </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This is helper function for safely getting environment variables</p>
+<p>Helper function for checking if a file exist</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">return</td><td>the environment variable value </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">return</td><td>true if exist and false if not exist </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>the environment variable name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>the file that needs to be checked </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="environment__helper_8hpp_source.html#l00017">17</a> of file <a class="el" href="environment__helper_8hpp_source.html">environment_helper.hpp</a>.</p>
+<p>Definition at line <a class="el" href="filesystem__helper_8hpp_source.html#l00016">16</a> of file <a class="el" href="filesystem__helper_8hpp_source.html">filesystem_helper.hpp</a>.</p>
 
 </div>
 </div>

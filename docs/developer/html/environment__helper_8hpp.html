@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>xdev: xdev/dev/xrt/examples/hal/meta/main.cpp File Reference</title>
+<title>xdev: xdev/dev/utilities/environment_helper.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,6 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -79,73 +81,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d18afa9345f000f65ca1f65ff9bd6be2.html">xdev</a></li><li class="navelem"><a class="el" href="dir_9e41302a9f2ea061056861038e396dc2.html">dev</a></li><li class="navelem"><a class="el" href="dir_d0d060ddee06a0444c00c06d57c50174.html">xrt</a></li><li class="navelem"><a class="el" href="dir_a0d88962fda9ae0239c619ad3390706e.html">examples</a></li><li class="navelem"><a class="el" href="dir_4b5d70dd59c81fb7f13f1c81ec266a14.html">hal</a></li><li class="navelem"><a class="el" href="dir_8db7bd0c4bd015cf4c705ca3bc478f9f.html">meta</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d18afa9345f000f65ca1f65ff9bd6be2.html">xdev</a></li><li class="navelem"><a class="el" href="dir_9e41302a9f2ea061056861038e396dc2.html">dev</a></li><li class="navelem"><a class="el" href="dir_84cfed26300830a54906477bbb1ef208.html">utilities</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">main.cpp File Reference</div>  </div>
+<div class="title">environment_helper.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;xclhal2.h&quot;</code><br />
-<code>#include &quot;xclperf.h&quot;</code><br />
-<code>#include &quot;easylogging++.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;easylogging++.h&quot;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for main.cpp:</div>
+Include dependency graph for environment_helper.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="meta_2main_8cpp__incl.png" border="0" usemap="#xdev_2dev_2xrt_2examples_2hal_2meta_2main_8cpp" alt=""/></div>
+<div class="center"><img src="environment__helper_8hpp__incl.png" border="0" usemap="#xdev_2dev_2utilities_2environment__helper_8hpp" alt=""/></div>
+<map name="xdev_2dev_2utilities_2environment__helper_8hpp" id="xdev_2dev_2utilities_2environment__helper_8hpp">
+</map>
 </div>
-</div><table class="memberdecls">
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="environment__helper_8hpp__dep__incl.png" border="0" usemap="#xdev_2dev_2utilities_2environment__helper_8hppdep" alt=""/></div>
+<map name="xdev_2dev_2utilities_2environment__helper_8hppdep" id="xdev_2dev_2utilities_2environment__helper_8hppdep">
+<area shape="rect" id="node2" href="xclbin__helper_8hpp.html" title="xdev/dev/xrt/examples\l/utilities/xclbin_helper.hpp" alt="" coords="9,95,181,136"/>
+<area shape="rect" id="node3" href="sysfs__demo_8cpp.html" title="xdev/dev/xrt/examples\l/hal/sysfs/sysfs_demo.cpp" alt="" coords="5,184,184,225"/>
+</map>
+</div>
+</div>
+<p><a href="environment__helper_8hpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="meta_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf688e0e5f4f5ee61caf9f0c1578008"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="environment__helper_8hpp.html#aecf688e0e5f4f5ee61caf9f0c1578008">get_environment_variable</a> (string name)</td></tr>
+<tr class="separator:aecf688e0e5f4f5ee61caf9f0c1578008"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<a class="anchor" id="aecf688e0e5f4f5ee61caf9f0c1578008"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int main </td>
+          <td class="memname">string get_environment_variable </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>argv</em>[]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="main"></a>
-Debug &amp; Profile Device Info API demo</h1>
-<dl class="section author"><dt>Author</dt><dd>Tianhao Zhou</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>1/2/2019</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>dev</dd></dl>
-<h2><a class="anchor" id="intro"></a>
-Introduction</h2>
-<p>This code snipet uses xclGetDebugProfileDeviceInfo with minimum amount of other APIs, making it a good tool for developing and debugging the API.</p>
-<h2><a class="anchor" id="steps"></a>
-Steps</h2>
-<ol type="1">
-<li>Probe</li>
-<li>Open 1 device at a time</li>
-<li>Get debug profile device info</li>
-<li>Print the info</li>
-<li>Close device </li>
-</ol>
-<dl class="section note"><dt>Note</dt><dd>START_EASYLOGGINGPP is the entry point to easyloggingpp which should be called only once before any logging</dd></dl>
+<p>This is helper function for safely getting environment variables</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">return</td><td>the environment variable value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>the environment variable name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="environment__helper_8hpp_source.html#l00017">17</a> of file <a class="el" href="environment__helper_8hpp_source.html">environment_helper.hpp</a>.</p>
 
 </div>
 </div>
