@@ -13,11 +13,11 @@ Test field for XRT development
 
 Examples make assumption that they are launched from build directory and will search data files using relative path if none is specified.
 
-| Category | Sub-Category | Example/Test                                                                           |
-|:--------:|:------------:|:--------------------------------------------------------------------------------------:|
-| XRT      | hal          | [sysfs api](./xdev/dev/xrt/examples/hal/sysfs)                                         |
-| XRT      | hal          | [probe api](./xdev/dev/xrt/examples/hal/probe)                                         |
-| XRT      | hal          | [debug profile device info api](./xdev/dev/xrt/examples/hal/debug_profile_device_info) |
+| Category         | Example/Test                                                                           |
+|:----------------:|:--------------------------------------------------------------------------------------:|
+| XRT/hal          | [sysfs api](./xdev/dev/xrt/examples/hal/sysfs)                                         |
+| XRT/hal          | [probe api](./xdev/dev/xrt/examples/hal/probe)                                         |
+| XRT/hal          | [debug profile device info api](./xdev/dev/xrt/examples/hal/debug_profile_device_info) |
 
 ### Need a kernel?
 
