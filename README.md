@@ -21,8 +21,10 @@ Examples make assumption that they are launched from build directory and will se
 
 ### Need a kernel?
 
-| Kernel                                 |
-|:--------------------------------------:|
-| [Copy Kernel](./darkside/kernel/copy/) |
+| Kernel                                         |
+|:----------------------------------------------:|
+| [Copy Kernel](./darkside/kernel/copy/)         |
+| [Vector Add Kernel](./darkside/kernel/vadd/)   |
+| [Hello World Kernel](./darkside/kernel/hello/) |
 
 ### Need a test?
