@@ -67,7 +67,7 @@ install:
     make DESTDIR=$PWD install
 
 script: 
-  -|
+  - |
     mkdir build && \
     cd build && \
     source ../deps_build/opt/xilinx/xrt/setup.sh && \
