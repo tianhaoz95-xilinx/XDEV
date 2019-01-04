@@ -1,6 +1,7 @@
 # XDEV
 Test field for XRT development
 
+[![Build Status](https://travis-ci.com/tianhaoz95-xilinx/XDEV.svg?branch=master)](https://travis-ci.com/tianhaoz95-xilinx/XDEV)
 [![Coverage Status](https://coveralls.io/repos/github/tianhaoz95-xilinx/XDEV/badge.svg?branch=master)](https://coveralls.io/github/tianhaoz95-xilinx/XDEV?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c7903a4371574a128d1a9ce2469fa04e)](https://www.codacy.com/app/tianhao.zhou/XDEV?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tianhaoz95-xilinx/XDEV&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/tianhaoz95-xilinx/XDEV/badge?style=flat-square)](https://www.codefactor.io/repository/github/tianhaoz95-xilinx/XDEV/badge?style=flat-square)
