@@ -1,0 +1,1 @@
+package_add_example(xrt/hal debug_profile_device_info debug_profile_device_info_demo.cpp)

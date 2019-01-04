@@ -1,0 +1,12 @@
+/*! \mainpage XDEV Developer Documentation
+ *
+ * \section intro_sec Introduction
+ *
+ * Work in progress
+ *
+ * \section install_sec Installation
+ *
+ * \subsection step1 Step 1: Placeholder
+ *
+ * etc...
+ */

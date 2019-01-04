@@ -1,0 +1,4 @@
+site_name: My Docs
+docs_dir: ../../xdev
+nav:
+    - Home: dev/xrt/examples/hal/sysfs/README.md
