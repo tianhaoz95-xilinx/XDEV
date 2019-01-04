@@ -1,6 +1,8 @@
 # XDEV
 Test field for XRT development
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c7903a4371574a128d1a9ce2469fa04e)](https://www.codacy.com/app/tianhao.zhou/XDEV?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tianhaoz95-xilinx/XDEV&amp;utm_campaign=Badge_Grade)
+
 ## Getting Started
 
 ## Documentation
