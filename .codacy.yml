@@ -1,0 +1,4 @@
+exclude_paths:
+  - 'docs/**'
+  - 'third_party/**'
+  - 'xdev/test/gtest/**'
