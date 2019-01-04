@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>xdev: clock_freq_topology Struct Reference</title>
+<title>xdev: darkside/kernel/vadd/vadd_kernel.cl Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,8 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -61,8 +61,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -79,40 +79,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9d2530cb26b705fdca3f800e838b02dd.html">darkside</a></li><li class="navelem"><a class="el" href="dir_693a1ebf06c03ab78f6ceb646414565c.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4559622cea75320b5cbe521bc3a04702.html">vadd</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structclock__freq__topology-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">clock_freq_topology Struct Reference</div>  </div>
+<div class="title">vadd_kernel.cl</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Collaboration diagram for clock_freq_topology:</div>
-<div class="dyncontent">
-<div class="center"><img src="structclock__freq__topology__coll__graph.png" border="0" usemap="#clock__freq__topology_coll__map" alt="Collaboration graph"/></div>
-<map name="clock__freq__topology_coll__map" id="clock__freq__topology_coll__map">
-<area shape="rect" id="node2" href="structclock__freq.html" title="clock_freq" alt="" coords="33,5,116,32"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aeda022c62c49e061dfc3f4ad75e26ed5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeda022c62c49e061dfc3f4ad75e26ed5"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_count</b></td></tr>
-<tr class="separator:aeda022c62c49e061dfc3f4ad75e26ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a723b18d942c12c5bdca6e1b74b8bcc7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a723b18d942c12c5bdca6e1b74b8bcc7c"></a>
-struct <a class="el" href="structclock__freq.html">clock_freq</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_clock_freq</b> [1]</td></tr>
-<tr class="separator:a723b18d942c12c5bdca6e1b74b8bcc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="xclbin_8h_source.html#l00300">300</a> of file <a class="el" href="xclbin_8h_source.html">xclbin.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li>third_party/XRT/src/runtime_src/driver/include/<a class="el" href="xclbin_8h_source.html">xclbin.h</a></li>
-</ul>
-</div><!-- contents -->
+<a href="vadd__kernel_8cl.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef GEN_DOC</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    kernel __attribute__((reqd_work_group_size(1, 1, 1)))</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="group__kernel__src.html#ga393d410e1d55a97d45582eb380616867">   12</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__kernel__src.html#ga393d410e1d55a97d45582eb380616867">vadd_kernel</a>(global <span class="keyword">const</span> <span class="keywordtype">int</span>* a , </div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                global <span class="keyword">const</span> <span class="keywordtype">int</span>* b , </div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                global <span class="keywordtype">int</span>* c , </div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">int</span> n_elements ) {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0 ; i &lt; n_elements ; ++i) {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        c[i] = a[i] + b[i];</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div><div class="ttc" id="group__kernel__src_html_ga393d410e1d55a97d45582eb380616867"><div class="ttname"><a href="group__kernel__src.html#ga393d410e1d55a97d45582eb380616867">vadd_kernel</a></div><div class="ttdeci">void vadd_kernel(global const int *a, global const int *b, global int *c, const int n_elements)</div><div class="ttdef"><b>Definition:</b> <a href="vadd__kernel_8cl_source.html#l00012">vadd_kernel.cl:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

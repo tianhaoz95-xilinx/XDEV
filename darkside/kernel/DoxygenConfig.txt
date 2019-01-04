@@ -1,3 +1,6 @@
 /**
  * \defgroup kernel_src Kernel Source Code
+ * Here are all the kernels for testing and
+ * development purpose. They aim to be simple
+ * and try to expose bugs.
  */

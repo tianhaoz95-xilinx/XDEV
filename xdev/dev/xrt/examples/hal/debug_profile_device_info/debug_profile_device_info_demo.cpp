@@ -14,7 +14,7 @@ using namespace std;
 
 /**
  * \ingroup hal_api_demo
- * \section main Debug & Profile Device Info API demo
+ * \section debug_profile_device_info_demo Debug & Profile Device Info API demo
  * \author Tianhao Zhou
  * \date 1/2/2019
  * \version dev

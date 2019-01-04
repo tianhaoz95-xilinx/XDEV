@@ -134,6 +134,8 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> [1]</td>
 <p>: [3-0] current state of a command : [11-10] extra CU masks in addition to mandatory mask : [22-12] number of words in payload (data) : [27-23] 0, opcode for start_kernel : [31-27] 0, type of start_kernel</p>
 <p>: first mandatory CU mask : count number of words representing command payload</p>
 <p>The packet payload is comprised of 1 mandatory CU mask plus extra_cu_masks per header field, followed a CU register map of size (count - (1 + extra_cu_masks)) uint32_t words. </p>
+
+<p>Definition at line <a class="el" href="ert_8h_source.html#l00094">94</a> of file <a class="el" href="ert_8h_source.html">ert.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>third_party/XRT/src/runtime_src/driver/include/<a class="el" href="ert_8h_source.html">ert.h</a></li>
 </ul>
