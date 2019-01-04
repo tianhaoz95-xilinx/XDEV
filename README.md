@@ -21,10 +21,10 @@ Examples make assumption that they are launched from build directory and will se
 
 ### Need a kernel?
 
-| Kernel                                         |
-|:----------------------------------------------:|
-| [Copy Kernel](./darkside/kernel/copy/)         |
-| [Vector Add Kernel](./darkside/kernel/vadd/)   |
-| [Hello World Kernel](./darkside/kernel/hello/) |
+| Kernel                                         | Type     |
+|:----------------------------------------------:|:--------:|
+| [Copy Kernel](./darkside/kernel/copy/)         | OpenCL C |
+| [Vector Add Kernel](./darkside/kernel/vadd/)   | OpenCL C |
+| [Hello World Kernel](./darkside/kernel/hello/) | OpenCL C |
 
 ### Need a test?
