@@ -1,5 +1,5 @@
 # XDEV
-Test field for XRT development
+Test field for card related development
 
 [![Build Status](https://travis-ci.com/tianhaoz95-xilinx/XDEV.svg?branch=master)](https://travis-ci.com/tianhaoz95-xilinx/XDEV)
 [![codecov](https://codecov.io/gh/tianhaoz95-xilinx/XDEV/branch/master/graph/badge.svg)](https://codecov.io/gh/tianhaoz95-xilinx/XDEV)
@@ -11,11 +11,13 @@ Test field for XRT development
 
 ## Getting Started
 
+### Quick Start
+
 ### Documentation
 
 [For Developers](https://tianhaoz95-xilinx.github.io/XDEV/html/index.html)
 
-### Need a demo code snipet?
+### Need Demo Code Snipet?
 
 Examples make assumption that they are launched from build directory and will search data files using relative path if none is specified.
 
@@ -25,7 +27,7 @@ Examples make assumption that they are launched from build directory and will se
 | XRT/hal          | [probe api](./xdev/dev/xrt/examples/hal/probe)                                         |
 | XRT/hal          | [debug profile device info api](./xdev/dev/xrt/examples/hal/debug_profile_device_info) |
 
-### Need a kernel?
+### Need Kernels?
 
 | Kernel                                         | Type     |
 |:----------------------------------------------:|:--------:|
@@ -33,4 +35,4 @@ Examples make assumption that they are launched from build directory and will se
 | [Vector Add Kernel](./darkside/kernel/vadd/)   | OpenCL C |
 | [Hello World Kernel](./darkside/kernel/hello/) | OpenCL C |
 
-### Need a test?
+### Need Tests?
