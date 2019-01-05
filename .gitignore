@@ -11,3 +11,6 @@ _x
 *.xclbin
 *.ltx
 *.xclbin.info
+
+# python tools
+*.pyc

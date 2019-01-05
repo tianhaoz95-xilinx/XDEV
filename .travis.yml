@@ -60,6 +60,9 @@ before_install:
   - sudo apt-get install -y doxygen
   - sudo apt-get install -y graphviz
   - pip install --user cpp-coveralls
+  - pip install mkdocs
+  - pip install cpplint
+  - pip install PyGithub
 
 install:
   - |
@@ -80,13 +83,15 @@ script:
   
   - cmake ..
 
-  - make probe
+  - make --quiet probe
   
-  - make developer_doc
+  - make --quiet developer_doc
 
   - ./bin/xrt/hal/probe
 
-after_success:
   - cd ..
 
+  - python ./tools/repository_automation/magic.py
+
+after_success:
   - coveralls --exclude build --gcov-options '\-lp'

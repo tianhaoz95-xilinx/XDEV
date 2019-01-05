@@ -1,7 +1,20 @@
-from github import Github
+import subprocess
+import os
+import re
+import ftype
+import config
+import linter
+import gitbot
 
-g = Github("xxx", "xxx")
-g = Github("xxx")
+def main():
+    cpplinter = linter.cppLinter()
+    lint_roots = config.get_lint_roots()
+    for lint_root in lint_roots:
+        cpplinter.lint_dir(lint_root, config.get_file_filters())
+    cpplinter.finalize()
+    top_results = cpplinter.get_top(5)
+    bot = gitbot.GitBot()
+    bot.post_lint_issues(top_results)
 
-repo = g.get_repo("tianhaoz95-xilinx/XDEV")
-repo.create_issue(title="This is a new issue", body="This is the issue body")
+if __name__ == '__main__':
+    main()
