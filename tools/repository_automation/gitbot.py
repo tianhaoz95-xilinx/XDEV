@@ -1,9 +1,15 @@
 from github import Github
 import composer
+import os
 
 class GitBot():
     def __init__(self):
-        self.github = Github('ab078859f9b6a8ac35f5dacd4069a5b9b96fa713')
+        token = ""
+        if 'GITHUB_ACCOUNT_TOKEN' in os.environ:
+            token = os.environ['GITHUB_ACCOUNT_TOKEN']
+        else:
+            raise RuntimeError('GITHUB_ACCOUNT_TOKEN not found')
+        self.github = Github(token)
         self.repo = self.github.get_repo('tianhaoz95-xilinx/XDEV')
         milestones = self.repo.get_milestones()
         milestone_found = False
