@@ -1,7 +1,14 @@
 site_name: My Docs
 docs_dir: ../../xdev/dev
 nav:
-    - Home: xrt/examples/hal/sysfs/README.md
-    - HAL:
-        - TEST:
-            - TEST: xrt/examples/hal/README.md
+    - Home: README.md
+    - Utilities: utilities/README.md
+    - XRT:
+        - Overview: xrt/README.md
+        - Utilities: xrt/utilities/README.md
+        - HAL:
+            - Overview: xrt/examples/hal/README.md
+            - Utilities: xrt/examples/utilities/README.md
+            - Debug Profile Device Info API: xrt/examples/hal/debug_profile_device_info/README.md
+            - Probe API: xrt/examples/hal/probe/README.md
+            - Sysfs Path API: xrt/examples/hal/sysfs/README.md
