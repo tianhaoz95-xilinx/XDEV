@@ -9,6 +9,7 @@
 #include "config.hpp"
 #include "easylogging++.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -23,21 +24,25 @@ using namespace std;
  */
 void read_sysfs_with_config(
     xclDeviceHandle device_handle /**< [in] the handle of the device we want to query the sysfs (sysfs is 1 per device) */,
-    bool read_all /**< [in] boolean that indicates if auto detect the size of the entry file */, 
     string subdev /**< [in] the name of the subdevice (e.g. xmc) */, 
     string entry /**< [in] the name of the entry (e.g. debug_ip_layout) */, 
     unsigned int size /**< [in] the size of the file to read, only used if read_all is set to false */,
     void* data /**< [in] the pointer to where the read back data should be written */)
 {
-    xclSysfsQuery query;
-    strcpy(query.subdev, subdev.c_str());
-    strcpy(query.entry, entry.c_str());
-    query.read_all = read_all;
-    query.size = size;
-    int err = xclReadSysfs(device_handle, query, data);
+    char sysfs_path[256];
+    int err = xclGetSysfsPath(device_handle, subdev.c_str(), entry.c_str(), sysfs_path, 256);
     LOG(INFO) << "Query device[0] sysfs finished ...";
     if (err) {
-        LOG(ERROR) << "Reading sysfs result failed";
+        LOG(ERROR) << "Reading sysfs path failed";
+        throw runtime_error("Read sysfs path failed");
+    }
+    LOG(INFO) << "Sysfs full path: " << string(sysfs_path);
+    ifstream fs(sysfs_path, ifstream::binary);
+    if (fs.is_open()) {
+        fs.read((char*)data, size);
+        fs.close();
+    } else {
+        LOG(ERROR) << "Failed to open sysfs";
         throw runtime_error("Read sysfs failed");
     }
 }
