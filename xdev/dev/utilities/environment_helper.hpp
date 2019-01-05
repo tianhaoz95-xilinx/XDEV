@@ -25,3 +25,4 @@ string get_environment_variable(string name /**< [in] the environment variable n
 }
 
 #endif
+
