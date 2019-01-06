@@ -64,6 +64,10 @@ before_install:
   - pip install --user mkdocs
   - pip install --user cpplint
   - pip install --user PyGithub
+  - python -m pip3 install --user cpp-coveralls
+  - python -m pip3 install --user mkdocs
+  - python -m pip3 install --user cpplint
+  - python -m pip3 install --user PyGithub
 
 install:
   - |
