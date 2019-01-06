@@ -64,6 +64,10 @@ before_install:
   - pip install --user mkdocs
   - pip install --user cpplint
   - pip install --user PyGithub
+  - pip3 install --user cpp-coveralls
+  - pip3 install --user mkdocs
+  - pip3 install --user cpplint
+  - pip3 install --user PyGithub
 
 install:
   - |
@@ -92,7 +96,7 @@ script:
 
   - cd ..
 
-  - python ./tools/repository_automation/magic.py
+  - python3 ./tools/repository_automation/magic.py
 
 after_success:
   - coveralls --exclude build --gcov-options '\-lp'
