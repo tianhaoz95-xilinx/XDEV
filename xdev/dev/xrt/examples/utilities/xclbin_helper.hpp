@@ -63,3 +63,4 @@ void load_xclbin_with_hal_api(string id /**< [in] the id of the xclbin */,
 }
 
 #endif
+
