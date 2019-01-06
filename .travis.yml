@@ -65,10 +65,10 @@ before_install:
   - pip install --user mkdocs
   - pip install --user cpplint
   - pip install --user PyGithub
-  - python3.5 -m pip install --user cpp-coveralls
-  - python3.5 -m pip install --user mkdocs
-  - python3.5 -m pip install --user cpplint
-  - python3.5 -m pip install --user PyGithub
+  - python3.5 -m pip3 install --user cpp-coveralls
+  - python3.5 -m pip3 install --user mkdocs
+  - python3.5 -m pip3 install --user cpplint
+  - python3.5 -m pip3 install --user PyGithub
 
 install:
   - |
