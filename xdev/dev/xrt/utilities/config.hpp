@@ -1,5 +1,7 @@
 /** @file */
 
+// Copyright (C) 1883 Tianhao Zhou - All Rights Reserved
+
 #ifndef __XRT_CONFIG__
 #define __XRT_CONFIG__
 
