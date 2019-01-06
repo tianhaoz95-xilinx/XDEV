@@ -15,7 +15,7 @@ Test field for card related development
 
 ### Documentation
 
-[For XDEV Developers](https://tianhaoz95-xilinx.github.io/XDEV/html/index.html) 
+[For XDEV Developers](https://tianhaoz95-xilinx.github.io/XDEV/developer/html/index.html) 
 
 [For Dev Users](https://tianhaoz95-xilinx.github.io/XDEV/demo/site/index.html)
 
