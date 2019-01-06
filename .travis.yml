@@ -59,6 +59,7 @@ before_install:
   - sudo apt-get install -y uuid
   - sudo apt-get install -y doxygen
   - sudo apt-get install -y graphviz
+  - sudo apt-get install -y pylint
   - pip install --user cpp-coveralls
   - pip install --user mkdocs
   - pip install --user cpplint
