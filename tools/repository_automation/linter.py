@@ -33,7 +33,7 @@ class cppLinter():
         print('Done linting ' + root_dir + ': ' + str(dir_lint) + ' / ' + str(dir_total) + ' linted' + ', invalid: ' + str(dir_invalid))
 
     def lint_one(self, filename):
-        p = subprocess.Popen(['python', '-m', 'cpplint', filename], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = subprocess.Popen(['python', '-m', 'cpplint', '--filter=-build/include_subdir', filename], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output = p.stderr.read()
         parsed_output = parse.parse_linter_output(output)
         return parsed_output
