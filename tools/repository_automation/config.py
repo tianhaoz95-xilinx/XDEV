@@ -15,7 +15,7 @@ def get_lint_roots():
     project_root = get_project_root()
     lint_roots = [
         os.path.join(project_root, 'xdev', 'dev'),
-        os.path.join(project_root, 'xdev', 'test'),
+        os.path.join(project_root, 'xdev', 'test', 'xrt'),
         os.path.join(project_root, 'darkside', 'kernel')
     ]
     return lint_roots
