@@ -61,6 +61,7 @@ before_install:
   - sudo apt-get install -y graphviz
   - sudo apt-get install -y pylint
   - sudo apt-get install -y python3-pip
+  - pip install --user setuptools
   - pip install --user cpp-coveralls
   - pip install --user mkdocs
   - pip install --user cpplint
@@ -69,6 +70,7 @@ before_install:
   - pip3 install --user mkdocs
   - pip3 install --user cpplint
   - pip3 install --user PyGithub
+  - pip3 install --user setuptools
 
 install:
   - |
