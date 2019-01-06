@@ -2,7 +2,7 @@ language: cpp
 
 matrix:
   include:
-    - dist: trusty
+    - dist: xenial
       addons:
         apt:
           sources:
