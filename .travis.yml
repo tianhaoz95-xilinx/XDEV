@@ -60,7 +60,7 @@ before_install:
   - sudo apt-get install -y doxygen
   - sudo apt-get install -y graphviz
   - sudo apt-get install -y pylint
-  - sudo apt-get install -y python3-pip
+  - sudo apt-get install -y python3.5-pip
   - pip install --user cpp-coveralls
   - pip install --user mkdocs
   - pip install --user cpplint
