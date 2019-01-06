@@ -12,7 +12,7 @@ def main():
     for lint_root in lint_roots:
         cpplinter.lint_dir(lint_root, config.get_file_filters())
     cpplinter.finalize()
-    top_results = cpplinter.get_top(5)
+    top_results = cpplinter.get_top(100)
     bot = gitbot.GitBot()
     bot.post_lint_issues(top_results)
 
