@@ -99,7 +99,7 @@ script:
 
   - cd ..
 
-  - python2.7 ./tools/repository_automation/magic.py
+  - python3 ./tools/repository_automation/magic.py
 
 after_success:
   - coveralls --exclude build --gcov-options '\-lp'
