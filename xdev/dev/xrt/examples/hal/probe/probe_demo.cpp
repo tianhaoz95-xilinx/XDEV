@@ -1,5 +1,7 @@
 /** @file */
 
+// Copyright 2019 Tianhao Zhou
+
 #include "xclhal2.h"
 #include "easylogging++.h"
 #include <iostream>
