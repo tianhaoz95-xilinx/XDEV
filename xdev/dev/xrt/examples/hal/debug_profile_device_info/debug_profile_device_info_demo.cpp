@@ -62,7 +62,6 @@ int debug_profile_device_info_demo(int argc, char* argv[]) {
         unsigned int nifd_instance = (unsigned int)info.nifd_instance;
         unsigned int device_type = (unsigned int)info.device_type;
         string device_name = (string)info.device_name;
-        string sysfs_name = (string)info.sysfs_name;
         string nifd_name = (string)info.nifd_name;
         LOG(INFO) << "\t Showing device[" << i << "] info:";
         LOG(INFO) << "\t\t Device Index: " << device_index;
@@ -71,7 +70,6 @@ int debug_profile_device_info_demo(int argc, char* argv[]) {
         LOG(INFO) << "\t\t NIFD Instance: " << nifd_instance;
         LOG(INFO) << "\t\t Management Instance: " << mgmt_instance;
         LOG(INFO) << "\t\t Device Name: " << device_name;
-        LOG(INFO) << "\t\t Sysfs Name: " << sysfs_name;
         LOG(INFO) << "\t\t NIFD Name: " << nifd_name;
         LOG(INFO) << "Closing device[" << i << "]";
         xclClose(device_handle);
