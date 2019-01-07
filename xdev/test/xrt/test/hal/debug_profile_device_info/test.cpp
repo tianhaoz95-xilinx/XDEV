@@ -25,7 +25,7 @@ TEST(XRT_HAL, Debug_Profile_Device_Info) {
     string log_filename = "meta_example_device_" + to_string(i) + ".log";
     xclDeviceHandle device_handle = xclOpen(i, log_filename.c_str(), xclVerbosityLevel::XCL_INFO);
     xclDebugProfileDeviceInfo info;
-    int err = xclGetDebugProfileDeviceInfo(device_handle, info);
+    int err = xclGetDebugProfileDeviceInfo(device_handle, &info);
     if (err) {
         throw runtime_error("Read meta failed");
     }

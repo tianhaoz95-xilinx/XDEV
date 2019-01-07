@@ -51,7 +51,7 @@ int debug_profile_device_info_demo(int argc, char* argv[]) {
         xclDeviceHandle device_handle = xclOpen(i, log_filename.c_str(), xclVerbosityLevel::XCL_INFO);
         LOG(INFO) << "Finished opening device[" << i << "]";
         xclDebugProfileDeviceInfo info;
-        int err = xclGetDebugProfileDeviceInfo(device_handle, info);
+        int err = xclGetDebugProfileDeviceInfo(device_handle, &info);
         if (err) {
             LOG(ERROR) << "Failed to get debug and profile meta";
             throw runtime_error("Read meta failed");
