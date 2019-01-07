@@ -2,7 +2,7 @@ language: cpp
 
 matrix:
   include:
-    - dist: trusty
+    - dist: xenial
       addons:
         apt:
           sources:
@@ -60,10 +60,17 @@ before_install:
   - sudo apt-get install -y doxygen
   - sudo apt-get install -y graphviz
   - sudo apt-get install -y pylint
+  - sudo apt-get install -y python3-pip
+  - pip install --user setuptools
   - pip install --user cpp-coveralls
   - pip install --user mkdocs
   - pip install --user cpplint
   - pip install --user PyGithub
+  - pip3 install --user setuptools
+  - pip3 install --user cpp-coveralls
+  - pip3 install --user mkdocs
+  - pip3 install --user cpplint
+  - pip3 install --user PyGithub
 
 install:
   - |
@@ -92,7 +99,7 @@ script:
 
   - cd ..
 
-  - python ./tools/repository_automation/magic.py
+  - python2.7 ./tools/repository_automation/magic.py
 
 after_success:
   - coveralls --exclude build --gcov-options '\-lp'
