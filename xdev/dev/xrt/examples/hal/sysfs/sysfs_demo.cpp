@@ -6,8 +6,10 @@
 #include "read_sysfs_helper.hpp"
 #include "visualize_debug_ip_layout_helper.hpp"
 #include "easylogging++.h"
-#include "xclbin_helper.hpp"
+// #include "xclbin_helper.hpp"
 #include <iostream>
+
+#include "xrt/hal/load_xclbin.hpp"
 
 INITIALIZE_EASYLOGGINGPP
 
@@ -42,7 +44,8 @@ int sysfs_demo(int argc, char* argv[]) {
     xclDeviceHandle device_handle = xclOpen(device_index, "sysfs_example.log", xclVerbosityLevel::XCL_INFO);
     LOG(INFO) << "device[0] opened";
     LOG(INFO) << "Loading xclbin ...";
-    load_xclbin_with_hal_api("alveo_u200_2018_3_1/hello/hello_kernel_hw_all.xclbin", device_handle);
+    // load_xclbin_with_hal_api("alveo_u200_2018_3_1/hello/hello_kernel_hw_all.xclbin", device_handle);
+    load_xclbin("alveo_u200_2018_3_1/hello/hello_kernel_hw_all.xclbin", device_handle);
     LOG(INFO) << "xclbin loaded";
     char data[MAX_DEBUG_IP_LAYOUT_SIZE];
     LOG(INFO) << "Querying device[0] sysfs ...";
@@ -57,6 +60,9 @@ int sysfs_demo(int argc, char* argv[]) {
     LOG(INFO) << "Closing device[0] ...";
     xclClose(device_handle);
     LOG(INFO) << "device[0] closed";
+#ifdef DEMO
+    LOG(INFO) << "DEMO found";
+#endif
     return 0;
 }
 

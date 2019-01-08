@@ -1,0 +1,1 @@
+# Test for the API that find sysfs path

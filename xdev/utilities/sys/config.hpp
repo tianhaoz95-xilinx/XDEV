@@ -1,9 +1,9 @@
 /** @file */
 
-// Copyright (C) 2019 Tianhao Zhou - All Rights Reserved
+#ifndef CONFIG_HPP_
+#define CONFIG_HPP_
 
-#ifndef __XRT_CONFIG__
-#define __XRT_CONFIG__
+// Copyright (C) 2019 Tianhao Zhou - All Rights Reserved
 
 /**
  * The default path to the xclbin repository:
@@ -36,4 +36,3 @@
 #define MAX_DEBUG_IP_LAYOUT_SIZE 65536
 
 #endif
-

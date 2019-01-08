@@ -1,0 +1,1 @@
+package_add_test(xrt/hal probe_test test_sysfs_path_api.cpp)
