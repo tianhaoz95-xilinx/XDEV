@@ -91,9 +91,15 @@ script:
   
   - cmake ..
 
-  - make --quiet probe
+  - make probe
+
+  - make sysfs
+
+  - make nifd
+
+  - make debug_profile_device_info
   
-  - make --quiet developer_doc
+  - make developer_doc
 
   - ./bin/xrt/hal/probe
 
