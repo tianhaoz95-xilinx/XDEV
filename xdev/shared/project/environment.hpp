@@ -1,7 +1,9 @@
 /** @file */
 
-#ifndef ENVIRONMENT_HPP_
-#define ENVIRONMENT_HPP_
+// Copyright 2019 Tianhao Zhou
+
+#ifndef XDEV_SHARED_PROJECT_ENVIRONMENT_HPP_
+#define XDEV_SHARED_PROJECT_ENVIRONMENT_HPP_
 
 #include "easylogging++.h"
 #include <iostream>
@@ -24,4 +26,5 @@ string get_environment_variable(string name /**< [in] the environment variable n
     }
 }
 
-#endif
+#endif  // XDEV_SHARED_PROJECT_ENVIRONMENT_HPP_
+
