@@ -1,7 +1,9 @@
 /** @file */
 
-#ifndef ERROR_HPP_
-#define ERROR_HPP_
+// Copyright 2019 Tianhao Zhou
+
+#ifndef XDEV_SHARED_PROJECT_ERROR_HPP_
+#define XDEV_SHARED_PROJECT_ERROR_HPP_
 
 #include <iostream>
 
@@ -15,7 +17,7 @@ void handle_errno(string msg, /**< [in] the message that should be shown given t
 
 void handle_errno(string msg, int err) {
 #ifdef DEMO
-    if(err) {
+    if (err) {
         LOG(ERROR) << msg << ", error code: " << err;
         throw runtime_error(msg);
     }
@@ -26,4 +28,5 @@ void handle_errno(string msg, int err) {
 #endif
 }
 
-#endif
+#endif  // XDEV_SHARED_PROJECT_ERROR_HPP_
+
