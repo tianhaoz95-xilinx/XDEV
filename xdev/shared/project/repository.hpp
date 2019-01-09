@@ -1,5 +1,7 @@
 /** @file */
 
+// Copyright 2019 Tianhao Zhou
+
 #ifndef XDEV_SHARED_PROJECT_REPOSITORY_HPP_
 #define XDEV_SHARED_PROJECT_REPOSITORY_HPP_
 
