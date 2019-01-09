@@ -1,10 +1,10 @@
-/** @file */ 
+/** @file */
 
-#ifndef __XCLBIN_REPO_HELPER__
-#define __XCLBIN_REPO_HELPER__
+#ifndef REPOSITORY_HPP_
+#define REPOSITORY_HPP_
 
 #include <iostream>
-#include "config.hpp"
+#include "project/config.hpp"
 
 using namespace std;
 

@@ -4,10 +4,10 @@
 #define LOAD_XCLBIN_HPP_
 
 #include "xclhal2.h"
-#include "sys/filesystem.hpp"
-#include "sys/config.hpp"
-#include "sys/error.hpp"
-#include "sys/environment.hpp"
+#include "project/filesystem.hpp"
+#include "project/config.hpp"
+#include "project/error.hpp"
+#include "project/environment.hpp"
 #include <iostream>
 #include <boost/filesystem.hpp>
 

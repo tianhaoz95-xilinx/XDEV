@@ -1,12 +1,12 @@
 /** @file */
 
-#ifndef __READ_SYSFS_HELPER__
-#define __READ_SYSFS_HELPER__
+#ifndef READ_SYSFS_HPP_
+#define READ_SYSFS_HPP_
 
 #include "xclhal2.h"
 #include "xclperf.h"
 #include "xclbin.h"
-#include "config.hpp"
+#include "project/config.hpp"
 #include "easylogging++.h"
 #include <iostream>
 #include <fstream>
