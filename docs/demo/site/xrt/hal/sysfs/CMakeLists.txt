@@ -1,0 +1,1 @@
+package_add_example(xrt/hal sysfs sysfs_demo.cpp)

@@ -1,0 +1,1 @@
+package_add_example(xrt/driver nifd nifd_driver_demo.cpp)
