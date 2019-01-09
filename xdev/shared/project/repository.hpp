@@ -1,7 +1,9 @@
 /** @file */
 
-#ifndef REPOSITORY_HPP_
-#define REPOSITORY_HPP_
+// Copyright 2019 Tianhao Zhou
+
+#ifndef XDEV_SHARED_PROJECT_REPOSITORY_HPP_
+#define XDEV_SHARED_PROJECT_REPOSITORY_HPP_
 
 #include <iostream>
 #include "project/config.hpp"
@@ -32,4 +34,5 @@ string search_xclbin_repository() {
     return xclbin_repo;
 }
 
-#endif
+#endif  // XDEV_SHARED_PROJECT_REPOSITORY_HPP_
+

@@ -1,7 +1,7 @@
 /** @file */
 
-#ifndef CONFIG_HPP_
-#define CONFIG_HPP_
+#ifndef XDEV_SHARED_PROJECT_CONFIG_HPP_
+#define XDEV_SHARED_PROJECT_CONFIG_HPP_
 
 // Copyright (C) 2019 Tianhao Zhou - All Rights Reserved
 
@@ -35,4 +35,5 @@
  */
 #define MAX_DEBUG_IP_LAYOUT_SIZE 65536
 
-#endif
+#endif  // XDEV_SHARED_PROJECT_CONFIG_HPP_
+

@@ -1,7 +1,9 @@
 /** @file */
 
-#ifndef LOAD_XCLBIN_HPP_
-#define LOAD_XCLBIN_HPP_
+// Copyright 2019 Tianhao Zhou
+
+#ifndef XDEV_SHARED_XRT_HAL_LOAD_XCLBIN_HPP_
+#define XDEV_SHARED_XRT_HAL_LOAD_XCLBIN_HPP_
 
 #include "xclhal2.h"
 #include "project/filesystem.hpp"
@@ -96,4 +98,5 @@ void check_xclbin_file_header(char* xclbin) {
 #endif
 }
 
-#endif
+#endif  // XDEV_SHARED_XRT_HAL_LOAD_XCLBIN_HPP_
+
