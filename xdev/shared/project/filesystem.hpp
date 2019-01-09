@@ -1,7 +1,9 @@
 /** @file */
 
-#ifndef FILESYSTEM_
-#define FILESYSTEM_
+// Copyright 2019 Tianhao Zhou
+
+#ifndef XDEV_SHARED_PROJECT_FILESYSTEM_HPP_
+#define XDEV_SHARED_PROJECT_FILESYSTEM_HPP_
 
 #include <iostream>
 
@@ -48,4 +50,5 @@ void check_if_file_exist(const string& filename /**< [in] the file that needs to
 #endif
 }
 
-#endif
+#endif  // XDEV_SHARED_PROJECT_FILESYSTEM_HPP_
+
