@@ -17,7 +17,7 @@ void handle_errno(string msg, int err) {
 #ifdef DEMO
     if(err) {
         LOG(ERROR) << msg << ", error code: " << err;
-        throw runtime_error("Unlock device failed");
+        throw runtime_error(msg);
     }
 #endif
 

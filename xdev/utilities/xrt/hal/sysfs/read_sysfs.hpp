@@ -7,7 +7,9 @@
 #include "xclperf.h"
 #include "xclbin.h"
 #include "project/config.hpp"
+#include "project/logging.hpp"
 #include "easylogging++.h"
+#include "project/error.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -33,17 +35,17 @@ void read_sysfs_with_config(
     int err = xclGetSysfsPath(device_handle, subdev.c_str(), entry.c_str(), sysfs_path, 256);
     LOG(INFO) << "Query device[0] sysfs finished ...";
     if (err) {
-        LOG(ERROR) << "Reading sysfs path failed";
+        devlog("Reading sysfs path failed");
         throw runtime_error("Read sysfs path failed");
     }
+    handle_errno("Read sysfs path failed", err);
     LOG(INFO) << "Sysfs full path: " << string(sysfs_path);
     ifstream fs(sysfs_path, ifstream::binary);
     if (fs.is_open()) {
         fs.read((char*)data, size);
         fs.close();
     } else {
-        LOG(ERROR) << "Failed to open sysfs";
-        throw runtime_error("Read sysfs failed");
+        handle_errno("Failed to open sysfs", 1);
     }
 }
 
