@@ -5,8 +5,8 @@
 #ifndef XDEV_SHARED_PROJECT_LOGGING_HPP_
 #define XDEV_SHARED_PROJECT_LOGGING_HPP_
 
-#include "easylogging++.h"
 #include <string>
+#include "easylogging++.h"
 
 using std::string;
 
