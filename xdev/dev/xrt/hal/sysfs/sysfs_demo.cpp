@@ -1,16 +1,12 @@
 /** @file */
 
+#include <iostream>
+#include "easylogging++.h"
 #include "xclhal2.h"
 #include "xclperf.h"
 #include "xclbin.h"
-// #include "read_sysfs_helper.hpp"
 #include "xrt/hal/sysfs/read_sysfs.hpp"
-// #include "visualize_debug_ip_layout_helper.hpp"
 #include "xrt/hal/visualization/debug_ip_layout.hpp"
-#include "easylogging++.h"
-// #include "xclbin_helper.hpp"
-#include <iostream>
-
 #include "xrt/hal/load_xclbin.hpp"
 
 INITIALIZE_EASYLOGGINGPP

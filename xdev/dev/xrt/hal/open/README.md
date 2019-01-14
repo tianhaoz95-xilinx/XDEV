@@ -1,0 +1,1 @@
+# A tiny code snipet to simply open devices

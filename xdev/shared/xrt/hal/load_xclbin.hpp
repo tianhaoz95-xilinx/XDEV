@@ -37,7 +37,7 @@ void check_xclbin_file_header(char* xclbin /**< [in] the memory where the xclbin
  * @param [out] return none
  */
 void load_xclbin(string id /**< [in] the id of the xclbin */, 
-                            xclDeviceHandle device_handle /**< [in] the hal device handle  */);
+                xclDeviceHandle device_handle /**< [in] the hal device handle  */);
 
 void load_xclbin(string id, xclDeviceHandle device_handle) {
     string xclbin_repo = search_xclbin_repository();

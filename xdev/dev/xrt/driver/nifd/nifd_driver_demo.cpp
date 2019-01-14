@@ -15,31 +15,15 @@
 #include <atomic>
 #include <chrono>
 #include "easylogging++.h"
+#include "xrt/driver/nifd/specification.hpp"
+#include "xrt/driver/nifd/location.hpp"
 
 INITIALIZE_EASYLOGGINGPP
 
 using namespace std;
 
-enum NIFDCommand {
-  NIFD_ACQUIRE_CU             = 0,
-  NIFD_RELEASE_CU             = 1,
-  NIFD_QUERY_CU               = 2,
-  NIFD_READBACK_VARIABLE      = 3,
-  NIFD_SWITCH_ICAP_TO_NIFD    = 4,
-  NIFD_SWITCH_ICAP_TO_PR      = 5,
-  NIFD_ADD_BREAKPOINTS        = 6,
-  NIFD_REMOVE_BREAKPOINTS     = 7,
-  NIFD_CHECK_STATUS           = 8,
-  NIFD_QUERY_XCLBIN           = 9,
-  NIFD_STOP_CONTROLLED_CLOCK  = 10,
-  NIFD_START_CONTROLLED_CLOCK = 11,
-  NIFD_SWITCH_CLOCK_MODE      = 12
-};
-
-#define NIFD_FREE_RUNNING_MODE 1
-#define NIFD_STEPPING_MODE     2
-
 std::atomic<bool> finished(false);
+std::atomic<bool> stopped(false);
 
 //Customized buffer allocation for 4K boundary alignment
 template <typename T>
@@ -59,28 +43,18 @@ struct aligned_allocator
   }
 };
 
-string get_xdma_driver_path() {
-    return "/dev/dri/renderD129";
-}
-
-string get_nifd_driver_path() {
-    return "/dev/nifd.m";
-}
-
-string get_xclbin_path() {
-    return "/proj/isi_group/isim/tianhaoz/Misc/nifd_xclbin/binary_container_with_better_debug_data.xclbin";
-}
-
-void run_kernel(int nifd_driver_fd, bool pause) {
+void run_kernel(int& nifd_driver_fd, bool pause) {
     int DATA_SIZE = 4096;
     size_t size_in_bytes = DATA_SIZE * sizeof(int);
     std::vector<int,aligned_allocator<int>> source_a(DATA_SIZE, 10);
     std::vector<int,aligned_allocator<int>> source_b(DATA_SIZE, 32);
     std::vector<int,aligned_allocator<int>> source_results(DATA_SIZE);
     std::vector<cl::Platform> platforms;
+    LOG(INFO) << "Getting OpenCL platforms ...";
     cl::Platform::get(&platforms);
     cl::Platform platform = platforms[0];
     std::vector<cl::Device> devices;
+    LOG(INFO) << "Getting OpenCL devices ...";
     platform.getDevices(CL_DEVICE_TYPE_ACCELERATOR, &devices);
     cl::Device device = devices[0];
     cl::Context context(device);
@@ -105,7 +79,17 @@ void run_kernel(int nifd_driver_fd, bool pause) {
     cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY, 
             size_in_bytes, source_results.data());
     if (pause) {
+        nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
+        LOG(INFO) << "NIFD driver file descriptor return value: " << nifd_driver_fd;
+
+        LOG(INFO) << "Turning on NIFD clock ...";
+        ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
+        LOG(INFO) << "NIFD clock is on";
+
+        LOG(INFO) << "Turning off NIFD clock ...";
         ioctl(nifd_driver_fd, NIFDCommand::NIFD_STOP_CONTROLLED_CLOCK, 0);
+        LOG(INFO) << "NIFD clock is off";
+        stopped = true;
     }
     q.enqueueMigrateMemObjects({buffer_a,buffer_b},0);
     int narg=0;
@@ -136,15 +120,12 @@ int nifd_driver_demo(int argc, char* argv[]) {
     string nifd_driver_path = get_nifd_driver_path();
     string xdma_driver_path = get_xdma_driver_path();
 
-    int nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
-    LOG(INFO) << "NIFD driver file descriptor return value: " << nifd_driver_fd;
-    int xdma_driver_fd = open(xdma_driver_path.c_str(), O_RDWR);
-    LOG(INFO) << "XDMA driver file descriptor return value: " << xdma_driver_fd;
+    int nifd_driver_fd = -1;
 
-    auto mode = NIFD_FREE_RUNNING_MODE;
-    LOG(INFO) << "Turning on NIFD clock ...";
-    ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
-    LOG(INFO) << "NIFD clock is on";
+    // int xdma_driver_fd = open(xdma_driver_path.c_str(), O_RDWR);
+    // LOG(INFO) << "XDMA driver file descriptor return value: " << xdma_driver_fd;
+
+    unsigned int mode = NIFD_FREE_RUNNING_MODE;
 
     LOG(INFO) << "Running kernel without NIFD ...";
     run_kernel(nifd_driver_fd, false);
@@ -162,12 +143,22 @@ int nifd_driver_demo(int argc, char* argv[]) {
         } else {
             LOG(INFO) << "Not finished";
         }
+        LOG(INFO) << "Waiting for 1 second ...";
         std::this_thread::sleep_for (std::chrono::seconds(1));
     }
 
-    ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode) ;
+    while (!stopped) {
+        std::this_thread::sleep_for (std::chrono::seconds(1));
+    }
 
+    mode = NIFD_FREE_RUNNING_MODE;
+    LOG(INFO) << "Turning on NIFD clock ...";
+    ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode) ;
+    LOG(INFO) << "NIFD clock is on";
+
+    LOG(INFO) << "Waiting for the NIFD kernel thread to finish ...";
     kernel_thread.join();
+    LOG(INFO) << "NIFD kernel thread finished";
 
     if (finished) {
         LOG(INFO) << "Finished";

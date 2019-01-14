@@ -1,0 +1,1 @@
+package_add_example(xrt/hal open_devices_demo open_devices_demo.cpp)
