@@ -10,4 +10,15 @@ Compiling the xclbin repository takes a long time, so idealy many instances of X
 
 ## Design Overview
 
-This utility should first take the root directory of the xclbin repository as the input and then construct a class of that represents the xclbin repository. Operations can then be performed on the class.
+This utility should first take the root directory of the xclbin repository as the input and then construct a class of that represents the xclbin repository. Operations can then be performed on the class. For example, cleaning intermediate files, distributed make, and making backups, etc.
+
+## The XCLBIN Repository Class
+
+```
+XclbinRepository
+    parameters:
+        - (str) root directory
+        - (list) shells
+    methods:
+        - validate: check if the root is really a xclbin repository
+```
