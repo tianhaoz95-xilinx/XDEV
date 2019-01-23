@@ -1,4 +1,7 @@
 # XDEV
+
+> So far, all the code and documentation in this project repository is meant for my personal usage only. There is no other purpose planned as of the date this README was updated.
+
 Test field for card related development
 
 [![Build Status](https://travis-ci.com/tianhaoz95-xilinx/XDEV.svg?branch=master)](https://travis-ci.com/tianhaoz95-xilinx/XDEV)

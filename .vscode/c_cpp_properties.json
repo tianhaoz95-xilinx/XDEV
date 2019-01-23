@@ -5,8 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/third_party/XRT/src/runtime_src/driver/include",
                 "${workspaceFolder}/third_party/easyloggingpp/src",
-                "${workspaceFolder}/xdev/utilities",
-                "${workspaceFolder}/xdev/xrt/utilities"
+                "${workspaceFolder}/xdev/shared"
             ],
             "defines": [
                 "_DEBUG",

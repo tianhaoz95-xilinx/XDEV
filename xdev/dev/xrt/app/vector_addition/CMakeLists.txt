@@ -1,0 +1,1 @@
+package_add_example(xrt/app vector_addition_demo vector_addition_demo.cpp)
