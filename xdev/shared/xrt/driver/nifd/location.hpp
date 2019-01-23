@@ -28,11 +28,11 @@ string get_nifd_driver_path();
 string get_xclbin_path();
 
 string get_xdma_driver_path() {
-    return "/dev/dri/renderD129";
+    return "/dev/dri/renderD128";
 }
 
 string get_nifd_driver_path() {
-    return "/dev/nifd.m45824";
+    return "/dev/nifd_pri.m45824";
 }
 
 string get_xclbin_path() {
