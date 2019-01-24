@@ -21,8 +21,8 @@ int nifd_alternate_xclbin(int argc, char* argv[]) {
     auto device = devices[0];
     auto context = cl::Context(device);
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
-    string vadd_filename = "~/Desktop/darkside/alveo_u200_nifd_experimental/vadd/vadd_kernel_hw_all.xclbin";
-    string hello_filename = "~/Desktop/darkside/alveo_u200_nifd_experimental/hello/hello_kernel_hw_all.xclbin";
+    string vadd_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/vadd/vadd_kernel_hw_all.xclbin";
+    string hello_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/hello/hello_kernel_hw_all.xclbin";
     LOG(INFO) << "Loading XCLBIN from " << hello_filename << " ...";
     cl::Program program = load_xclbin_create_program(context, {device}, hello_filename);
     LOG(INFO) << "XCLBIN from " << hello_filename << " loaded";
