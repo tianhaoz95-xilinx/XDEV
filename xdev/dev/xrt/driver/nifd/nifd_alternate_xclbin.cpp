@@ -1,5 +1,6 @@
 #include <iostream>
 #include "easylogging++.h"
+#include "project/logging.hpp"
 #include "xrt/opencl/retrieve_platform.hpp"
 #include "xrt/opencl/retrieve_device.hpp"
 #include "xrt/opencl/load_xclbin.hpp"
@@ -29,6 +30,7 @@ int nifd_alternate_xclbin(int argc, char* argv[]) {
 
 int main(int argc, char* argv[]) {
     START_EASYLOGGINGPP(argc, argv);
+    check_logging_status();
     LOG(INFO) << "Starting nifd_alternate_xclbin ...";
     return nifd_alternate_xclbin(argc, argv);
 }
