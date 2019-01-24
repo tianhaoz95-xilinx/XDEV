@@ -64,7 +64,7 @@ void nifd_operation() {
     packet[2] = 0;
     packet[3] = 0;
     LOG(INFO) << "Sending variable read back to NIFD driver ...";
-    int err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, packet);
+    int err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
     LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     LOG(INFO) << "NIFD operations finished";
     return;
