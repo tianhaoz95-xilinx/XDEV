@@ -7,6 +7,8 @@
 #include "xrt/opencl/retrieve_platform.hpp"
 #include "xrt/opencl/retrieve_device.hpp"
 #include "xrt/opencl/load_xclbin.hpp"
+#include "xrt/driver/nifd/specification.hpp"
+#include "xrt/driver/nifd/location.hpp"
 
 INITIALIZE_EASYLOGGINGPP
 
