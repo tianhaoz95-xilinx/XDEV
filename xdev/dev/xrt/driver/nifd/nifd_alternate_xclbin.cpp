@@ -69,7 +69,7 @@ void reset_icap_with_hal() {
     LOG(INFO) << "Device [" << device_cnt << "] opened";
     unsigned int reg_target_value = 0x40;
     LOG(INFO) << "Writing to ICAP ...";
-    int err = xclUnmgdPwrite(device_handle, 0, (void*)(&reg_target_value), sizeof(unsigned int), 0x2010c);
+    int err = xclUnmgdPwrite(device_handle, 1, (void*)(&reg_target_value), sizeof(unsigned int), 0x2010c);
     LOG(INFO) << "Writing to ICAP finished with return code: " << err;
     return;
 }
