@@ -27,7 +27,9 @@ int nifd_alternate_xclbin(int argc, char* argv[]) {
     cl::Program program = load_xclbin_create_program(context, {device}, hello_filename);
     LOG(INFO) << "XCLBIN from " << hello_filename << " loaded";
     // read back from NIFD
-    // cl::Program program = load_xclbin_create_program(context, {device}, hello_filename);
+    LOG(INFO) << "Loading XCLBIN from " << vadd_filename << " ...";
+    cl::Program program = load_xclbin_create_program(context, {device}, vadd_filename);
+    LOG(INFO) << "XCLBIN from " << vadd_filename << " loaded";
     // check for card hang
     return 0;
 }
