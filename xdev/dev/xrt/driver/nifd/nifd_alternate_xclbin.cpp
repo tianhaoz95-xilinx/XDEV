@@ -1,4 +1,7 @@
 #include <iostream>
+#include <sys/ioctl.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include "easylogging++.h"
 #include "project/logging.hpp"
 #include "xrt/opencl/retrieve_platform.hpp"
@@ -48,6 +51,20 @@ void load_vadd_xclbin() {
 }
 
 void nifd_operation() {
+    LOG(INFO) << "Executing NIFD operations ...";
+    string nifd_driver_path = get_nifd_driver_path();
+    LOG(INFO) << "Opening NIFD driver from " << nifd_driver_path << "...";
+    int nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
+    LOG(INFO) << "NIFD driver from " << nifd_driver_path << " opened with file descriptor: " << nifd_driver_fd;
+    unsigned int packet[4];
+    packet[0] = 1;
+    packet[1] = 0;
+    packet[2] = 0;
+    packet[3] = 0;
+    LOG(INFO) << "Sending variable read back to NIFD driver ...";
+    int err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, packet);
+    LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
+    LOG(INFO) << "NIFD operations finished";
     return;
 }
 
