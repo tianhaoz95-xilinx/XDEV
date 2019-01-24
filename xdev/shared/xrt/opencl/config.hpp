@@ -1,5 +1,11 @@
 /** @file */
 
+/**
+ * This header file should be included before 
+ * any other OpenCL resources because it contains
+ * preprocessor options
+ */
+
 #ifndef XDEV_SHARED_XRT_OPENCL_CONFIG_HPP_
 #define XDEV_SHARED_XRT_OPENCL_CONFIG_HPP_
 
