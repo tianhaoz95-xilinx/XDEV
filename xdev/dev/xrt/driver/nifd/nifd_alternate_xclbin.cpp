@@ -1,5 +1,10 @@
 #include <iostream>
 #include "easylogging++.h"
+#include "xrt/opencl/retrieve_platform.hpp"
+#include "xrt/opencl/retrieve_device.hpp"
+#include "xrt/opencl/load_xclbin.hpp"
+
+INITIALIZE_EASYLOGGINGPP
 
 int nifd_alternate_xclbin(int argc, char* argv[]) {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
