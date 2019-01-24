@@ -9,8 +9,11 @@
 #include "xrt/opencl/load_xclbin.hpp"
 #include "xrt/driver/nifd/specification.hpp"
 #include "xrt/driver/nifd/location.hpp"
+#include "xclhal2.h"
 
 INITIALIZE_EASYLOGGINGPP
+
+using std::runtime_error;
 
 void load_hello_xclbin() {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
@@ -52,6 +55,25 @@ void load_vadd_xclbin() {
     LOG(INFO) << "XCLBIN from " << vadd_filename << " loaded";
 }
 
+void reset_icap_with_hal() {
+    LOG(INFO) << "Trying to reset ICAP through XRT HAL ...";
+    int device_cnt = xclProbe();
+    LOG(INFO) << "Found " << device_cnt << " devices available";
+    if (device_cnt <= 0) {
+        LOG(ERROR) << "No device found";
+        throw runtime_error("no device found");
+    }
+    int device_index = 0;
+    LOG(INFO) << "Opening device [" << device_cnt << "]...";
+    xclDeviceHandle device_handle = xclOpen(device_index, "nifd_alternate_xclbin_reset_icap.log", xclVerbosityLevel::XCL_INFO);
+    LOG(INFO) << "Device [" << device_cnt << "] opened";
+    unsigned int reg_target_value = 0x40;
+    LOG(INFO) << "Writing to ICAP ...";
+    int err = xclUnmgdPwrite(device_handle, 0, (void*)(&reg_target_value), sizeof(unsigned int), 0x2010c);
+    LOG(INFO) << "Writing to ICAP finished with return code: " << err;
+    return;
+}
+
 void nifd_operation() {
     LOG(INFO) << "Executing NIFD operations ...";
     string nifd_driver_path = get_nifd_driver_path();
@@ -67,6 +89,7 @@ void nifd_operation() {
     ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, 0);
     int err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
     ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
+    reset_icap_with_hal();
     LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     LOG(INFO) << "NIFD operations finished";
     return;
