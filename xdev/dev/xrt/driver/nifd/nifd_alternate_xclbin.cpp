@@ -28,5 +28,6 @@ int nifd_alternate_xclbin(int argc, char* argv[]) {
 
 int main(int argc, char* argv[]) {
     START_EASYLOGGINGPP(argc, argv);
+    LOG(INFO) << "Starting nifd_alternate_xclbin ...";
     return nifd_alternate_xclbin(argc, argv);
 }
