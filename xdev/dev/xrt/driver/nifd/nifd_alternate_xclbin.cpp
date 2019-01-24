@@ -24,11 +24,11 @@ int nifd_alternate_xclbin(int argc, char* argv[]) {
     string vadd_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/vadd/vadd_kernel_hw_all.xclbin";
     string hello_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/hello/hello_kernel_hw_all.xclbin";
     LOG(INFO) << "Loading XCLBIN from " << hello_filename << " ...";
-    cl::Program program = load_xclbin_create_program(context, {device}, hello_filename);
+    cl::Program hello_program = load_xclbin_create_program(context, {device}, hello_filename);
     LOG(INFO) << "XCLBIN from " << hello_filename << " loaded";
     // read back from NIFD
     LOG(INFO) << "Loading XCLBIN from " << vadd_filename << " ...";
-    program = load_xclbin_create_program(context, {device}, vadd_filename);
+    cl::Program vadd_program = load_xclbin_create_program(context, {device}, vadd_filename);
     LOG(INFO) << "XCLBIN from " << vadd_filename << " loaded";
     // check for card hang
     return 0;
