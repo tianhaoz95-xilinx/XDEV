@@ -32,7 +32,9 @@ vector<cl::Device> retrieve_device_by_name(cl::Platform platform, string name) {
     for (size_t i = 0 ; i < devices.size() ; i++){
         cl::Device device = devices[i];
         string current_name = device.getInfo<CL_DEVICE_NAME>();
+        devlog("Found device: " + current_name);
         if (current_name == name){
+            devlog("Found VALID device: " + current_name + " , pushing to the devices array...");
             matches.push_back(devices[i]);
         }
     }
