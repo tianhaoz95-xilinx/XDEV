@@ -5,10 +5,22 @@
 #ifndef XDEV_SHARED_PROJECT_LOGGING_HPP_
 #define XDEV_SHARED_PROJECT_LOGGING_HPP_
 
-#include <string>
+#include <iostream>
 #include "easylogging++.h"
 
 using std::string;
+using std::cout;
+using std::endl;
+
+void check_logging_status() {
+#ifdef DEMO
+    cout << "The code is compiled with DEMO" << endl;
+#endif
+
+#ifdef TEST
+    cout << "The code is compiled with TEST" << endl;
+#endif
+}
 
 void devlog(string msg) {
 #ifdef DEMO
