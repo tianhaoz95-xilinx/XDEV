@@ -11,12 +11,12 @@ void load_hello_xclbin() {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
     if (xilinx_platforms.empty()) {
         LOG(WARNING) << "No Xilinx platform found";
-        return 0;
+        return;
     }
     auto devices = retrieve_device_by_name(xilinx_platforms[0], "xilinx_u200_xdma_201830_2");
     if (devices.empty()) {
         LOG(WARNING) << "No valid device found";
-        return 0;
+        return;
     }
     auto device = devices[0];
     auto context = cl::Context(device);
@@ -31,12 +31,12 @@ void load_vadd_xclbin() {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
     if (xilinx_platforms.empty()) {
         LOG(WARNING) << "No Xilinx platform found";
-        return 0;
+        return;
     }
     auto devices = retrieve_device_by_name(xilinx_platforms[0], "xilinx_u200_xdma_201830_2");
     if (devices.empty()) {
         LOG(WARNING) << "No valid device found";
-        return 0;
+        return;
     }
     auto device = devices[0];
     auto context = cl::Context(device);
