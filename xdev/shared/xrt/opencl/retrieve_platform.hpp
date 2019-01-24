@@ -7,6 +7,7 @@
 #include <vector>
 #include "easylogging++.h"
 #include "xrt/opencl/config.hpp"
+#include "project/logging.hpp"
 
 using std::string;
 using std::vector;
@@ -31,7 +32,9 @@ vector<cl::Platform> retrieve_platform_by_name(string name) {
     for(size_t i = 0; i < platforms.size() ;i++) {
         cl::Platform platform = platforms[i];
         std::string platformName = platform.getInfo<CL_PLATFORM_NAME>();
-        if ( platformName == "Xilinx") {
+        devlog("Found platform: " + platformName);
+        if (platformName == "Xilinx") {
+            devlog("Found VALID platform: " + platformName + " , pushing to the platform array...");
             matches.push_back(platform);
         }
     }
