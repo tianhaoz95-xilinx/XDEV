@@ -29,6 +29,7 @@ vector<cl::Platform> retrieve_platform_by_index(int index) {
 vector<cl::Platform> retrieve_platform_by_name(string name) {
     vector<cl::Platform> platforms;
     vector<cl::Platform> matches;
+    cl::Platform::get(&platforms);
     for(size_t i = 0; i < platforms.size() ;i++) {
         cl::Platform platform = platforms[i];
         std::string platformName = platform.getInfo<CL_PLATFORM_NAME>();
