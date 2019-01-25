@@ -117,12 +117,10 @@ int nifd_driver_demo(int argc, char* argv[]) {
     START_EASYLOGGINGPP(argc, argv);
     
     string nifd_driver_path = get_nifd_driver_path();
-    string xdma_driver_path = get_xdma_driver_path();
 
-    int nifd_driver_fd = -1;
-
-    // int xdma_driver_fd = open(xdma_driver_path.c_str(), O_RDWR);
-    // LOG(INFO) << "XDMA driver file descriptor return value: " << xdma_driver_fd;
+    LOG(INFO) << "Opening NIFD driver from " << nifd_driver_path << "...";
+    int nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
+    LOG(INFO) << "NIFD driver from " << nifd_driver_path << " opened with file descriptor: " << nifd_driver_fd;
 
     unsigned int mode = NIFD_FREE_RUNNING_MODE;
 
