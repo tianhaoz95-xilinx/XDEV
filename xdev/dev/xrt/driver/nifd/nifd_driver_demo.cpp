@@ -44,6 +44,11 @@ struct aligned_allocator
 };
 
 void run_kernel(int nifd_driver_fd, bool pause) {
+    if (pause) {
+        LOG(INFO) << "Start pausing example ...";
+    } else {
+        LOG(INFO) << "Start free running example ...";
+    }
     int DATA_SIZE = 4096;
     size_t size_in_bytes = DATA_SIZE * sizeof(int);
     std::vector<int,aligned_allocator<int>> source_a(DATA_SIZE, 10);
@@ -110,7 +115,7 @@ void run_kernel(int nifd_driver_fd, bool pause) {
             break;
         }
     }
-    LOG(INFO) << "TEST " << (match ? "FAILED" : "PASSED") << ", pause: ", pause;
+    LOG(INFO) << "TEST " << (match ? "FAILED" : "PASSED") << ", pause: " << pause;
 }
 
 int nifd_driver_demo(int argc, char* argv[]) {
