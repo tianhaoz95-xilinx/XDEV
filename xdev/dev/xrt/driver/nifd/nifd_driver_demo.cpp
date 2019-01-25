@@ -43,7 +43,7 @@ struct aligned_allocator
   }
 };
 
-void run_kernel(int& nifd_driver_fd, bool pause) {
+void run_kernel(int nifd_driver_fd, bool pause) {
     int DATA_SIZE = 4096;
     size_t size_in_bytes = DATA_SIZE * sizeof(int);
     std::vector<int,aligned_allocator<int>> source_a(DATA_SIZE, 10);
