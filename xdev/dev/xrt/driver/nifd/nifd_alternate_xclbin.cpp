@@ -109,7 +109,6 @@ void nifd_operation() {
     ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, 0);
     int err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
     ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
-    reset_icap_with_hal();
     LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     LOG(INFO) << "NIFD operations finished";
     return;
@@ -118,6 +117,7 @@ void nifd_operation() {
 int nifd_alternate_xclbin(int argc, char* argv[]) {
     load_hello_xclbin();
     nifd_operation();
+    reset_icap_with_hal();
     load_vadd_xclbin();
     return 0;
 }

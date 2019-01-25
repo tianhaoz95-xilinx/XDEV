@@ -36,7 +36,7 @@ string get_nifd_driver_path() {
 }
 
 string get_xclbin_path() {
-    return "/proj/isi_group/isim/tianhaoz/Misc/nifd_xclbin/binary_container_with_better_debug_data.xclbin";
+    return "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/vadd/vadd_kernel_hw_all.xclbin";
 }
 
 #endif  // XDEV_SHARED_XRT_DRIVER_NIFD_LOCATION_HPP_

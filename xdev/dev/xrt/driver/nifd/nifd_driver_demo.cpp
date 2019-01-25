@@ -71,7 +71,7 @@ void run_kernel(int& nifd_driver_fd, bool pause) {
     bins.push_back({buf,nb});
     devices.resize(1);
     cl::Program program(context, devices, bins);
-    cl::Kernel krnl_vector_add(program,"krnl_vadd");
+    cl::Kernel krnl_vector_add(program,"vadd_kernel");
     cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,  
             size_in_bytes, source_a.data());
     cl::Buffer buffer_b(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,  
