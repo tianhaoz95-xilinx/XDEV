@@ -79,9 +79,6 @@ void run_kernel(int& nifd_driver_fd, bool pause) {
     cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY, 
             size_in_bytes, source_results.data());
     if (pause) {
-        nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
-        LOG(INFO) << "NIFD driver file descriptor return value: " << nifd_driver_fd;
-
         LOG(INFO) << "Turning on NIFD clock ...";
         ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
         LOG(INFO) << "NIFD clock is on";
