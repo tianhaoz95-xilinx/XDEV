@@ -14,6 +14,26 @@
 INITIALIZE_EASYLOGGINGPP
 
 using std::runtime_error;
+using std::string;
+
+void load_nifd_demo_xclbin(string xclbin_filename) {
+    auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
+    if (xilinx_platforms.empty()) {
+        LOG(WARNING) << "No Xilinx platform found";
+        return;
+    }
+    auto devices = retrieve_device_by_name(xilinx_platforms[0], "xilinx_u200_xdma_201830_2");
+    if (devices.empty()) {
+        LOG(WARNING) << "No valid device found";
+        return;
+    }
+    auto device = devices[0];
+    auto context = cl::Context(device);
+    cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
+    LOG(INFO) << "Loading XCLBIN from " << xclbin_filename << " ...";
+    cl::Program demo_program = load_xclbin_create_program(context, {device}, xclbin_filename);
+    LOG(INFO) << "XCLBIN from " << xclbin_filename << " loaded";
+}
 
 void load_hello_xclbin() {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
