@@ -89,7 +89,7 @@ void run_kernel(int nifd_driver_fd, bool pause) {
 
         LOG(INFO) << "Switching ICAP clock to NIFD ...";
         err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, 0);
-        LOG(INFO) << "Switching ICAP clock to NIFD finished";
+        LOG(INFO) << "Switching ICAP clock to NIFD finished with return code: " << err;
 
         LOG(INFO) << "Turning on NIFD clock ...";
         err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
@@ -166,7 +166,7 @@ int nifd_driver_demo(int argc, char* argv[]) {
 
     LOG(INFO) << "Switching ICAP clock to PR ...";
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
-    LOG(INFO) << "Switching ICAP clock to PR finished";
+    LOG(INFO) << "Switching ICAP clock to PR finished with return code: " << err;
 
     LOG(INFO) << "Waiting for the NIFD kernel thread to finish ...";
     kernel_thread.join();
