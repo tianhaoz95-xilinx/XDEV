@@ -79,6 +79,8 @@ void run_kernel(int& nifd_driver_fd, bool pause) {
     cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY, 
             size_in_bytes, source_results.data());
     if (pause) {
+        unsigned int mode = NIFD_FREE_RUNNING_MODE;
+
         LOG(INFO) << "Turning on NIFD clock ...";
         ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
         LOG(INFO) << "NIFD clock is on";
@@ -164,7 +166,6 @@ int nifd_driver_demo(int argc, char* argv[]) {
     }
 
     close(nifd_driver_fd);
-    close(xdma_driver_fd);
 
     return 0;
 }
