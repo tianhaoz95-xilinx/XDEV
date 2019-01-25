@@ -7,6 +7,7 @@ def main():
     connection.session.set_session_type_rmcp('10.0.0.1')
     connection.session.set_auth_type_user('ADMIN', 'ADMIN')
     connection.session.establish()
+    print(connection.get_device_id())
 
 if __name__ == '__main__':
     main()
