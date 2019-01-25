@@ -94,6 +94,24 @@ void reset_icap_with_hal() {
     return;
 }
 
+void reset_card_with_hal() {
+    LOG(INFO) << "Trying to reset ICAP through XRT HAL ...";
+    int device_cnt = xclProbe();
+    LOG(INFO) << "Found " << device_cnt << " devices available";
+    if (device_cnt <= 0) {
+        LOG(ERROR) << "No device found";
+        throw runtime_error("no device found");
+    }
+    int device_index = 0;
+    LOG(INFO) << "Opening device [" << device_cnt << "]...";
+    xclDeviceHandle device_handle = xclOpen(device_index, "nifd_alternate_xclbin_reset_icap.log", xclVerbosityLevel::XCL_INFO);
+    LOG(INFO) << "Device [" << device_cnt << "] opened";
+    LOG(INFO) << "Resetting card ...";
+    int err = xclResetDevice(device_handle, XCL_RESET_FULL);
+    LOG(INFO) << "Resetting card finished with return code: " << err;
+    return;
+}
+
 void nifd_operation() {
     LOG(INFO) << "Executing NIFD operations ...";
     string nifd_driver_path = get_nifd_driver_path();
@@ -117,7 +135,8 @@ void nifd_operation() {
 int nifd_alternate_xclbin(int argc, char* argv[]) {
     load_hello_xclbin();
     nifd_operation();
-    reset_icap_with_hal();
+    // reset_icap_with_hal();
+    reset_card_with_hal();
     load_vadd_xclbin();
     return 0;
 }
