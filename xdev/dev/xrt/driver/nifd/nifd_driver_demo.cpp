@@ -91,12 +91,12 @@ void run_kernel(int nifd_driver_fd, bool pause) {
         err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, 0);
         LOG(INFO) << "Switching ICAP clock to NIFD finished with return code: " << err;
 
-        LOG(INFO) << "Turning on NIFD clock ...";
-        err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
-        LOG(INFO) << "Turning on NIFD clock finished with return code: " << err;
+        // LOG(INFO) << "Turning on NIFD clock ...";
+        // err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
+        // LOG(INFO) << "Turning on NIFD clock finished with return code: " << err;
 
         LOG(INFO) << "Turning off NIFD clock ...";
-        err = ioctl(nifd_driver_fd, NIFDCommand::NIFD_STOP_CONTROLLED_CLOCK, 0);
+        err = ioctl(nifd_driver_fd, NIFD_STOP_CONTROLLED_CLOCK, 0);
         LOG(INFO) << "Turning off NIFD clock finished with return code: " << err;
         stopped = true;
     }
