@@ -85,14 +85,15 @@ void run_kernel(int nifd_driver_fd, bool pause) {
             size_in_bytes, source_results.data());
     if (pause) {
         unsigned int mode = NIFD_FREE_RUNNING_MODE;
+        int err = 0;
 
         LOG(INFO) << "Turning on NIFD clock ...";
-        ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
-        LOG(INFO) << "NIFD clock is on";
+        err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
+        LOG(INFO) << "Turning on NIFD clock finished with return code: " << err;
 
         LOG(INFO) << "Turning off NIFD clock ...";
-        ioctl(nifd_driver_fd, NIFDCommand::NIFD_STOP_CONTROLLED_CLOCK, 0);
-        LOG(INFO) << "NIFD clock is off";
+        err = ioctl(nifd_driver_fd, NIFDCommand::NIFD_STOP_CONTROLLED_CLOCK, 0);
+        LOG(INFO) << "Turning off NIFD clock finished with return code: " << err;
         stopped = true;
     }
     q.enqueueMigrateMemObjects({buffer_a,buffer_b},0);
@@ -122,6 +123,7 @@ int nifd_driver_demo(int argc, char* argv[]) {
     START_EASYLOGGINGPP(argc, argv);
     
     string nifd_driver_path = get_nifd_driver_path();
+    int err = 0;
 
     LOG(INFO) << "Opening NIFD driver from " << nifd_driver_path << "...";
     int nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
@@ -140,13 +142,13 @@ int nifd_driver_demo(int argc, char* argv[]) {
     int wait_cnt = 5;
 
     for (int i = 0; i < wait_cnt; ++i) {
-        if (finished) {
-            LOG(INFO) << "Finished";
-        } else {
-            LOG(INFO) << "Not finished";
-        }
         LOG(INFO) << "Waiting for 1 second ...";
         std::this_thread::sleep_for (std::chrono::seconds(1));
+        if (finished) {
+            LOG(INFO) << "Finished: NIFD pausing is not working";
+        } else {
+            LOG(INFO) << "Not finished: normal behaviour";
+        }
     }
 
     while (!stopped) {
@@ -155,17 +157,17 @@ int nifd_driver_demo(int argc, char* argv[]) {
 
     mode = NIFD_FREE_RUNNING_MODE;
     LOG(INFO) << "Turning on NIFD clock ...";
-    ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode) ;
-    LOG(INFO) << "NIFD clock is on";
+    err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode) ;
+    LOG(INFO) << "Turning on NIFD clock finished with return code: " << err;
 
     LOG(INFO) << "Waiting for the NIFD kernel thread to finish ...";
     kernel_thread.join();
     LOG(INFO) << "NIFD kernel thread finished";
 
     if (finished) {
-        LOG(INFO) << "Finished";
+        LOG(INFO) << "Finished: normal behaviour";
     } else {
-        LOG(INFO) << "Not finished";
+        LOG(INFO) << "Not finished: kernel hang";
     }
 
     close(nifd_driver_fd);
