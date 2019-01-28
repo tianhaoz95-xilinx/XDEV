@@ -35,27 +35,6 @@ void load_nifd_demo_xclbin(string xclbin_filename) {
     LOG(INFO) << "XCLBIN from " << xclbin_filename << " loaded";
 }
 
-void load_hello_xclbin() {
-    auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
-    if (xilinx_platforms.empty()) {
-        LOG(WARNING) << "No Xilinx platform found";
-        throw runtime_error("no xilinx platform found");
-    }
-    auto devices = retrieve_device_by_name(xilinx_platforms[0], "xilinx_u200_xdma_201830_2");
-    if (devices.empty()) {
-        LOG(WARNING) << "No valid device found";
-        throw runtime_error("no valid device found");
-    }
-    auto device = devices[0];
-    auto context = cl::Context(device);
-    cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
-    string hello_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/hello/hello_kernel_hw_all.xclbin";
-    LOG(INFO) << "Loading XCLBIN from " << hello_filename << " ...";
-    cl::Program hello_program = load_xclbin_create_program(context, {device}, hello_filename);
-    LOG(INFO) << "XCLBIN from " << hello_filename << " loaded";
-    nifd_operation();
-}
-
 void load_vadd_xclbin() {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
     if (xilinx_platforms.empty()) {
@@ -137,6 +116,27 @@ void nifd_operation() {
     LOG(INFO) << "NIFD operations finished";
     reset_icap_with_hal();
     return;
+}
+
+void load_hello_xclbin() {
+    auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
+    if (xilinx_platforms.empty()) {
+        LOG(WARNING) << "No Xilinx platform found";
+        throw runtime_error("no xilinx platform found");
+    }
+    auto devices = retrieve_device_by_name(xilinx_platforms[0], "xilinx_u200_xdma_201830_2");
+    if (devices.empty()) {
+        LOG(WARNING) << "No valid device found";
+        throw runtime_error("no valid device found");
+    }
+    auto device = devices[0];
+    auto context = cl::Context(device);
+    cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
+    string hello_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/hello/hello_kernel_hw_all.xclbin";
+    LOG(INFO) << "Loading XCLBIN from " << hello_filename << " ...";
+    cl::Program hello_program = load_xclbin_create_program(context, {device}, hello_filename);
+    LOG(INFO) << "XCLBIN from " << hello_filename << " loaded";
+    nifd_operation();
 }
 
 int nifd_alternate_xclbin(int argc, char* argv[]) {
