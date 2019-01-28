@@ -145,7 +145,7 @@ int nifd_driver_demo(int argc, char* argv[]) {
 
     for (int i = 0; i < wait_cnt; ++i) {
         LOG(INFO) << "Waiting for 1 second ...";
-        std::this_thread::sleep_for (std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         if (finished) {
             LOG(INFO) << "Finished: NIFD pausing is not working";
         } else {
@@ -154,7 +154,7 @@ int nifd_driver_demo(int argc, char* argv[]) {
     }
 
     while (!stopped) {
-        std::this_thread::sleep_for (std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
     mode = NIFD_FREE_RUNNING_MODE;

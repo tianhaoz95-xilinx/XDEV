@@ -1,0 +1,21 @@
+{
+    "lab": {
+        "jump_host": {
+            "hostname": "__ask_user__",
+            "username": "__ask_user__",
+            "password": "__ask_user__"
+        },
+        "machines": [
+            {
+                "hostname": "10.23.53.230",
+                "username": "xsjdpe2",
+                "password": "xsjdpe2"
+            },
+            {
+                "hostname": "10.23.53.206",
+                "username": "xsjbrd6",
+                "password": "xsjbrd6"
+            }
+        ]
+    }
+}
