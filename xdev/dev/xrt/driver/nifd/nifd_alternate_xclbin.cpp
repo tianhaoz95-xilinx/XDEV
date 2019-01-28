@@ -136,11 +136,11 @@ void load_hello_xclbin() {
     LOG(INFO) << "Loading XCLBIN from " << hello_filename << " ...";
     cl::Program hello_program = load_xclbin_create_program(context, {device}, hello_filename);
     LOG(INFO) << "XCLBIN from " << hello_filename << " loaded";
-    nifd_operation();
 }
 
 int nifd_alternate_xclbin(int argc, char* argv[]) {
     load_hello_xclbin();
+    nifd_operation();
     load_vadd_xclbin();
     return 0;
 }
