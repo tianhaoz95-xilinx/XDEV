@@ -92,6 +92,10 @@ void reset_icap_with_hal() {
     LOG(INFO) << "Writing value 0x" << std::hex << reg_target_value << " to ICAP address 0x" << icap_offset << std::dec << " ...";
     int err = xclUnmgdPwrite(device_handle, 0, (void*)(&reg_target_value), sizeof(unsigned int), icap_offset);
     LOG(INFO) << "Writing to ICAP finished with return code: " << err;
+    if (err) {
+        LOG(ERROR) << "Unmanaged write to ICAP reset failed";
+        throw runtime_error("reset ICAP failed");
+    }
     return;
 }
 
