@@ -88,8 +88,9 @@ void reset_icap_with_hal() {
     xclDeviceHandle device_handle = xclOpen(device_index, "nifd_alternate_xclbin_reset_icap.log", xclVerbosityLevel::XCL_INFO);
     LOG(INFO) << "Device [" << device_cnt << "] opened";
     unsigned int reg_target_value = 0x4;
-    LOG(INFO) << "Writing to ICAP ...";
-    int err = xclUnmgdPwrite(device_handle, 1, (void*)(&reg_target_value), sizeof(unsigned int), 0x2010c);
+    unsigned long icap_offset = 0x2010c;
+    LOG(INFO) << "Writing value 0x" << std::hex << reg_target_value << " to ICAP address 0x" << icap_offset << std::dec << " ...";
+    int err = xclUnmgdPwrite(device_handle, 1, (void*)(&reg_target_value), sizeof(unsigned int), icap_offset);
     LOG(INFO) << "Writing to ICAP finished with return code: " << err;
     return;
 }
