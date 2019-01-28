@@ -130,14 +130,13 @@ void nifd_operation() {
     ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
     LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     LOG(INFO) << "NIFD operations finished";
+    reset_icap_with_hal();
     return;
 }
 
 int nifd_alternate_xclbin(int argc, char* argv[]) {
     load_hello_xclbin();
     nifd_operation();
-    reset_icap_with_hal();
-    // reset_card_with_hal();
     load_vadd_xclbin();
     return 0;
 }
