@@ -87,7 +87,7 @@ void reset_icap_with_hal() {
     LOG(INFO) << "Opening device [" << device_cnt << "]...";
     xclDeviceHandle device_handle = xclOpen(device_index, "nifd_alternate_xclbin_reset_icap.log", xclVerbosityLevel::XCL_INFO);
     LOG(INFO) << "Device [" << device_cnt << "] opened";
-    unsigned int reg_target_value = 0x40;
+    unsigned int reg_target_value = 0x4;
     LOG(INFO) << "Writing to ICAP ...";
     int err = xclUnmgdPwrite(device_handle, 1, (void*)(&reg_target_value), sizeof(unsigned int), 0x2010c);
     LOG(INFO) << "Writing to ICAP finished with return code: " << err;
