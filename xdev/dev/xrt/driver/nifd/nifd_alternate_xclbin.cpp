@@ -135,8 +135,8 @@ void nifd_operation() {
 int nifd_alternate_xclbin(int argc, char* argv[]) {
     load_hello_xclbin();
     nifd_operation();
-    // reset_icap_with_hal();
-    reset_card_with_hal();
+    reset_icap_with_hal();
+    // reset_card_with_hal();
     load_vadd_xclbin();
     return 0;
 }
