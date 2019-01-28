@@ -90,7 +90,7 @@ void reset_icap_with_hal() {
     unsigned int reg_target_value = 0x4;
     unsigned long icap_offset = 0x2010c;
     LOG(INFO) << "Writing value 0x" << std::hex << reg_target_value << " to ICAP address 0x" << icap_offset << std::dec << " ...";
-    int err = xclUnmgdPwrite(device_handle, 1, (void*)(&reg_target_value), sizeof(unsigned int), icap_offset);
+    int err = xclUnmgdPwrite(device_handle, 0, (void*)(&reg_target_value), sizeof(unsigned int), icap_offset);
     LOG(INFO) << "Writing to ICAP finished with return code: " << err;
     return;
 }
