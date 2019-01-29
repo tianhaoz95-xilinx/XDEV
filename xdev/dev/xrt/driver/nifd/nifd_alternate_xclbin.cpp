@@ -85,7 +85,7 @@ void reset_icap_with_ioctl() {
     int management_driver_fd = open(management_driver_path.c_str(), O_RDWR);
     LOG(INFO) << "Management driver from " << management_driver_path << " opened with file descriptor: " << management_driver_fd;
     LOG(INFO) << "Sending NIFD reset to management driver ...";
-    int err = ioctl(management_driver_fd, XCLMGMT_RESETNIFD);
+    int err = ioctl(management_driver_fd, XCLMGMT_RESET_NIFD);
     LOG(INFO) << "NIFD reset returned with error code: " << err;
     return;
 }
