@@ -31,6 +31,10 @@ string get_xdma_driver_path() {
     return "/dev/dri/renderD128";
 }
 
+string get_management_driver_path() {
+    return "xclmgmt45824";
+}
+
 string get_nifd_driver_path() {
     return "/dev/nifd_pri.m45824";
 }

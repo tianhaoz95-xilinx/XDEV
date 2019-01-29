@@ -79,6 +79,17 @@ void reset_icap_with_hal() {
     return;
 }
 
+void reset_icap_with_ioctl() {
+    string management_driver_path = get_management_driver_path();
+    LOG(INFO) << "Opening management driver from " << management_driver_path << "...";
+    int management_driver_fd = open(management_driver_path.c_str(), O_RDWR);
+    LOG(INFO) << "Management driver from " << management_driver_path << " opened with file descriptor: " << management_driver_fd;
+    LOG(INFO) << "Sending NIFD reset to management driver ...";
+    int err = ioctl(management_driver_fd, XCLMGMT_RESET_NIFD);
+    LOG(INFO) << "NIFD reset returned with error code: " << err;
+    return;
+}
+
 void reset_card_with_hal() {
     LOG(INFO) << "Trying to reset ICAP through XRT HAL ...";
     int device_cnt = xclProbe();
@@ -114,7 +125,8 @@ void nifd_operation() {
     ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
     LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     LOG(INFO) << "NIFD operations finished";
-    reset_icap_with_hal();
+    // reset_icap_with_hal();
+    reset_icap_with_ioctl();
     return;
 }
 
