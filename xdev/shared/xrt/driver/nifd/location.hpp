@@ -32,7 +32,7 @@ string get_xdma_driver_path() {
 }
 
 string get_management_driver_path() {
-    return "xclmgmt45824";
+    return "/dev/xclmgmt45824";
 }
 
 string get_nifd_driver_path() {
