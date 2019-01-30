@@ -35,7 +35,7 @@ int experimental_xdma_spm(int argc, char* argv[]) {
     if (size < 0) {
         throw runtime_error("unmanaged read xdma spm failed");
     }
-    string xdma_spm_readback = "XDMA SPM: ";
+    string xdma_spm_readback = "XDMA SPM values: ";
     for (int i = 0; i < spm_size; ++i) {
         stringstream convert;
         convert << "0x" << hex << xdma_buf[i] << " ";
@@ -48,7 +48,7 @@ int experimental_xdma_spm(int argc, char* argv[]) {
     if (size < 0) {
         throw runtime_error("unmanaged read kdma spm failed");
     }
-    string kdma_spm_readback = "XDMA SPM: ";
+    string kdma_spm_readback = "KDMA SPM values: ";
     for (int i = 0; i < spm_size; ++i) {
         stringstream convert;
         convert << "0x" << hex << kdma_buf[i] << " ";
@@ -61,7 +61,7 @@ int experimental_xdma_spm(int argc, char* argv[]) {
     if (size < 0) {
         throw runtime_error("unmanaged read p2p spm failed");
     }
-    string p2p_spm_readback = "XDMA SPM: ";
+    string p2p_spm_readback = "P2P SPM values: ";
     for (int i = 0; i < spm_size; ++i) {
         stringstream convert;
         convert << "0x" << hex << p2p_buf[i] << " ";
