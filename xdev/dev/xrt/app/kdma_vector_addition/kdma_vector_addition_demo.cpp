@@ -17,10 +17,12 @@ int kdma_vector_addition_demo(int argc, char* argv[]) {
 
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
     if (xilinx_platforms.empty()) {
+        LOG(INFO) << "No valid platform found";
         return 0;
     }
-    auto devices = retrieve_device_by_name(xilinx_platforms[0], "xilinx_u200_xdma_201830_1");
+    auto devices = retrieve_device_by_name(xilinx_platforms[0], "xilinx_u200_xdma_201830_2");
     if (devices.empty()) {
+        LOG(INFO) << "No valid device found";
         return 0;
     }
     auto device = devices[0];
