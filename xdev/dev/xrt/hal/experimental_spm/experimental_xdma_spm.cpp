@@ -28,10 +28,11 @@ int experimental_xdma_spm(int argc, char* argv[]) {
     LOG(INFO) << "Device[" << device_index << "] opened" ;
 
     unsigned size = 0;
-    unsigned int spm_size = 5;
+    unsigned int spm_size = 12;
     LOG(INFO) << "Reading the SPM attached to XDMA engine ...";
     unsigned int xdma_buf[256];
-    size = xclUnmgdPread(device_handle, 0, (void*)xdma_buf, spm_size * sizeof(unsigned int), xdma_spm_addr);
+    // size = xclUnmgdPread(device_handle, 0, (void*)xdma_buf, spm_size * sizeof(unsigned int), xdma_spm_addr);
+    size = xclRead(XCL_ADDR_SPACE_DEVICE_PERFMON, xdma_spm_addr, (void*)xdma_buf, spm_size * sizeof(unsigned int));
     if (size < 0) {
         throw runtime_error("unmanaged read xdma spm failed");
     }
