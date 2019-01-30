@@ -42,17 +42,26 @@ int kdma_vector_addition_demo(int argc, char* argv[]) {
     cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR|CL_MEM_READ_ONLY|CL_MEM_EXT_PTR_XILINX, size_in_bytes, source_a.data());
     cl::Buffer buffer_b(context, CL_MEM_USE_HOST_PTR|CL_MEM_READ_ONLY|CL_MEM_EXT_PTR_XILINX, size_in_bytes, source_b.data());
     cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR|CL_MEM_WRITE_ONLY|CL_MEM_EXT_PTR_XILINX, size_in_bytes, source_results.data());
+    LOG(INFO) << "Migrating buffer_a and buffer_b";
     q.enqueueMigrateMemObjects({buffer_a,buffer_b}, 0);
+    LOG(INFO) << "Waiting for migration to finish";
     q.finish();
+    LOG(INFO) << "Migrating buffer_a and buffer_b finished, copying buffer_a to buffer_b";
     q.enqueueCopyBuffer(buffer_a, buffer_b, 0, 0, size_in_bytes);
+    LOG(INFO) << "Waiting for buffer copying to finish";
     q.finish();
+    LOG(INFO) << "Buffer copying finished";
     krnl_vector_add.setArg(0, buffer_a);
     krnl_vector_add.setArg(1, buffer_b);
     krnl_vector_add.setArg(2, buffer_result);
     krnl_vector_add.setArg(3, data_size);
+    LOG(INFO) << "Enqueuing vadd task";
     q.enqueueTask(krnl_vector_add);
+    LOG(INFO) << "Enqueuing result buffer migration to fetch the results";
     q.enqueueMigrateMemObjects({buffer_result},CL_MIGRATE_MEM_OBJECT_HOST);
+    LOG(INFO) << "Waiting for the queue to finish up";
     q.finish();
+    LOG(INFO) << "All tasks finished";
     for (int i = 0; i < 5; i++) {
         std::cout << i << " ";
     }
