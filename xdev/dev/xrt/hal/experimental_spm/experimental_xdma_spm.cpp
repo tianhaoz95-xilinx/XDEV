@@ -71,6 +71,11 @@ int experimental_xdma_spm(int argc, char* argv[]) {
         p2p_spm_readback += convert.str();
     }
     LOG(INFO) << p2p_spm_readback;
+    unsigned int write_to_control_reg = 0x1;
+    size = xclWrite(device_handle, XCL_ADDR_SPACE_DEVICE_PERFMON, p2p_spm_addr + 0x8, (void*)(&write_to_control_reg), sizeof(unsigned int));
+    if (size < 0) {
+        throw runtime_error("unmanaged read p2p spm failed");
+    }
     LOG(INFO) << "Closing device[0] ...";
     xclClose(device_handle);
     LOG(INFO) << "device[0] closed";
