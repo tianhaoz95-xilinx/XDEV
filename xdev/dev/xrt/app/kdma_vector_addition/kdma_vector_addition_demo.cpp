@@ -25,9 +25,13 @@ int kdma_vector_addition_demo(int argc, char* argv[]) {
         LOG(INFO) << "No valid device found";
         return 0;
     }
+    LOG(INFO) << "Creating the device ...";
     auto device = devices[0];
+    LOG(INFO) << "Device created, Creating the context ...";
     auto context = cl::Context(device);
+    LOG(INFO) << "Context created. Constructing the command queue";
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
+    LOG(INFO) << "The command queue constructed";
     int data_size = 256;
     std::vector<int,aligned_allocator<int>> source_a(data_size, 0);
     std::vector<int,aligned_allocator<int>> source_b(data_size, 0);
