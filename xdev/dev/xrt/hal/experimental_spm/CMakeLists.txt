@@ -1,1 +1,1 @@
-package_add_example(xrt/hal experimental_xdma_spm experimental_xdma_spm.cpp)
+package_add_example(xrt/hal experimental_static_spm_sanity_check experimental_static_spm_sanity_check.cpp)

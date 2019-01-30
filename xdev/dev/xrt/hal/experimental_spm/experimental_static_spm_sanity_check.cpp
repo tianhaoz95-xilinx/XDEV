@@ -13,7 +13,7 @@ using namespace std;
 /**
  * Example for opening devices
  */
-int experimental_xdma_spm(int argc, char* argv[]) {
+int experimental_static_spm_sanity_check(int argc, char* argv[]) {
     unsigned long xdma_spm_addr = 0x00270000;
     unsigned long p2p_spm_addr = 0x00280000;
     unsigned long kdma_spm_addr = 0x00290000;
@@ -103,5 +103,5 @@ int experimental_xdma_spm(int argc, char* argv[]) {
 
 int main(int argc, char* argv[]) {
     START_EASYLOGGINGPP(argc, argv);
-    return experimental_xdma_spm(argc, argv);
+    return experimental_static_spm_sanity_check(argc, argv);
 }
