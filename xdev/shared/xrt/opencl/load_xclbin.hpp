@@ -28,7 +28,9 @@ cl::Program load_xclbin_create_program(cl::Context context, vector<cl::Device> d
     xclbin_file.read(buf, nb);
     cl::Program::Binaries bins;
     bins.push_back({buf,nb});
+    devlog("Constructing the program ...");
     cl::Program program(context, devices, bins);
+    devlog("Program constructed");
     delete [] buf;
     return program;
 }
