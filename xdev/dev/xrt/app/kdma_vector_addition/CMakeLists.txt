@@ -1,0 +1,1 @@
+package_add_example(xrt/app kdma_vector_addition_demo kdma_vector_addition_demo.cpp)

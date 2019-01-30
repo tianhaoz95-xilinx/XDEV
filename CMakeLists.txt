@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
+if(POLICY CMP0057)
+  cmake_policy(SET CMP0057 NEW)
+endif()
+
 set(CMAKE_CXX_STANDARD 14)
 
 include(cmake/cov_config.cmake)

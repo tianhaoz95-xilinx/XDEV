@@ -1,1 +1,2 @@
 add_subdirectory(vector_addition)
+add_subdirectory(kdma_vector_addition)
