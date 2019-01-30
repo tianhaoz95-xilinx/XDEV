@@ -28,7 +28,7 @@ int experimental_xdma_spm(int argc, char* argv[]) {
     LOG(INFO) << "Device[" << device_index << "] opened" ;
 
     unsigned size = 0;
-    unsigned int spm_size = 1;
+    unsigned int spm_size = 5;
     LOG(INFO) << "Reading the SPM attached to XDMA engine ...";
     unsigned int xdma_buf[256];
     size = xclUnmgdPread(device_handle, 0, (void*)xdma_buf, spm_size, xdma_spm_addr);
