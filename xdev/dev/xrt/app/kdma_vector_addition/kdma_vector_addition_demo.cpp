@@ -40,8 +40,11 @@ int kdma_vector_addition_demo(int argc, char* argv[]) {
         source_a[i] = i;
     }
     string xclbin_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_kdma_p2p_verify/vadd/vadd_kernel_hw_all.xclbin";
+    LOG(INFO) << "Loading xclbin from " << xclbin_filename << " ...";
     cl::Program program = load_xclbin_create_program(context, {device}, xclbin_filename);
+    LOG(INFO) << "Constructing vadd kernel from the program ...";
     cl::Kernel krnl_vector_add(program, "vadd_kernel");
+    LOG(INFO) << "The vadd kernel is constructed";
     int size_in_bytes = data_size * sizeof(int);
     cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR|CL_MEM_READ_ONLY|CL_MEM_EXT_PTR_XILINX, size_in_bytes, source_a.data());
     cl::Buffer buffer_b(context, CL_MEM_USE_HOST_PTR|CL_MEM_READ_ONLY|CL_MEM_EXT_PTR_XILINX, size_in_bytes, source_b.data());
