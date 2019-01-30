@@ -14,7 +14,7 @@ int kdma_vector_addition_demo(int argc, char* argv[]) {
     unsigned long xdma_spm_offset = 0x00270000;
     unsigned long p2p_spm_offset = 0x00280000;
     unsigned long kdma_spm_offset = 0x00290000;
-    
+
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
     if (xilinx_platforms.empty()) {
         return 0;
@@ -33,7 +33,7 @@ int kdma_vector_addition_demo(int argc, char* argv[]) {
     for (int i = 0; i < data_size; ++i) {
         source_a[i] = i;
     }
-    string xclbin_filename = "placeholder";
+    string xclbin_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_kdma_p2p_verify/vadd/vadd_kernel_hw_all.xclbin";
     cl::Program program = load_xclbin_create_program(context, {device}, xclbin_filename);
     cl::Kernel krnl_vector_add(program, "vadd_kernel");
     int size_in_bytes = data_size * sizeof(int);
