@@ -126,6 +126,7 @@ void nifd_operation() {
     LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     LOG(INFO) << "NIFD operations finished";
     // reset_icap_with_hal();
+    // reset_card_with_hal();
     reset_icap_with_ioctl();
     return;
 }

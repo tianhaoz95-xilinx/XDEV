@@ -6,6 +6,15 @@ def get_power_cycle_help():
     msg += 'if not specified, a random workstation other than the one to be power cycled will be used \n'
     return msg
 
+def generate_power_cycle_command():
+    pass
+
+def power_cycle_auto(target, jump_host):
+    pass
+
+def power_cycle_with_target(target, intermediate, jump_host):
+    pass
+
 def power_cycle(payload, jump_host):
     if len(payload) == 0:
         err_msg = 'Error: too few arguments \n' + get_power_cycle_help()

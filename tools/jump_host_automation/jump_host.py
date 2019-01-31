@@ -22,3 +22,11 @@ class JumpHost():
             'password': password,
             'session': machine_session
         }
+
+    def get_machine(self, hostname):
+        if hostname not in self.machines:
+            raise RuntimeError(hostname + ' not found.')
+        return self.machines[hostname]
+
+    def get_machine_hostnames(self):
+        return self.machines.keys()
