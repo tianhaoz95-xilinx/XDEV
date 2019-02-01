@@ -158,7 +158,12 @@ void load_hello_xclbin() {
 int nifd_alternate_xclbin(int argc, char* argv[]) {
     load_hello_xclbin();
     nifd_operation();
-    load_vadd_xclbin();
+    string continue_option;
+    std::cout << "Continue to load vadd kernel? [y/n]: ";
+    std::cin >> continue_option;
+    if (continue_option == "y") {
+        load_vadd_xclbin();
+    }
     return 0;
 }
 
