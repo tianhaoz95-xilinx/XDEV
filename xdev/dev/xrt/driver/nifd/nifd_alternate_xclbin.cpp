@@ -87,6 +87,10 @@ void reset_icap_with_ioctl() {
     LOG(INFO) << "Sending NIFD reset to management driver ...";
     int err = ioctl(management_driver_fd, XCLMGMT_RESET_NIFD);
     LOG(INFO) << "NIFD reset returned with error code: " << err;
+    if (err < 0) {
+        LOG(ERROR) << "ioctl to ICAP reset failed";
+        throw runtime_error("reset ICAP failed");
+    }
     return;
 }
 
@@ -127,7 +131,7 @@ void nifd_operation() {
     LOG(INFO) << "NIFD operations finished";
     // reset_icap_with_hal();
     // reset_card_with_hal();
-    reset_icap_with_ioctl();
+    // reset_icap_with_ioctl();
     return;
 }
 
