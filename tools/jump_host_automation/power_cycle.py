@@ -13,7 +13,11 @@ def power_cycle_auto(target, jump_host):
     pass
 
 def power_cycle_with_target(target, intermediate, jump_host):
-    pass
+    print('Fetching the target session from workstation ' + target + ' ...')
+    target_workstation_session = jump_host.get_machine(target)['session']
+    print('Fetching the intermediate session from workstation ' + intermediate + ' ...')
+    intermediate_workstation_session = jump_host.get_machine(intermediate)['session']
+    print('Disconnecting from the workstation ' + target + ' ...')
 
 def power_cycle(payload, jump_host):
     if len(payload) == 0:
