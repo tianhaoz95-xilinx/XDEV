@@ -133,6 +133,10 @@ int nifd_driver_demo(int argc, char* argv[]) {
     int nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
     LOG(INFO) << "NIFD driver from " << nifd_driver_path << " opened with file descriptor: " << nifd_driver_fd;
 
+    LOG(INFO) << "Switching control to PR ...";
+    ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
+    LOG(INFO) << "Control switched to PR";
+
     LOG(INFO) << "Running kernel without NIFD ...";
     run_kernel(nifd_driver_fd, false);
     LOG(INFO) << "Succeeded without NIFD";
@@ -175,6 +179,10 @@ int nifd_driver_demo(int argc, char* argv[]) {
     } else {
         LOG(INFO) << "Not finished: kernel hang";
     }
+
+    LOG(INFO) << "Switching control to PR ...";
+    ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
+    LOG(INFO) << "Control switched to PR";
 
     close(nifd_driver_fd);
 
