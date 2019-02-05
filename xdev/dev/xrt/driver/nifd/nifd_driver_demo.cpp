@@ -157,7 +157,7 @@ int nifd_driver_demo(int argc, char* argv[]) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    mode = NIFD_FREE_RUNNING_MODE;
+    unsigned int mode = NIFD_FREE_RUNNING_MODE;
     LOG(INFO) << "Turning on NIFD clock ...";
     err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode) ;
     LOG(INFO) << "Turning on NIFD clock finished with return code: " << err;
