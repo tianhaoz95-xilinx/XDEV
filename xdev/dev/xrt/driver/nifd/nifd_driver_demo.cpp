@@ -79,16 +79,16 @@ void run_kernel(int nifd_driver_fd, bool pause) {
     LOG(INFO) << "OpenCL program created";
     cl::Kernel krnl_vector_add(program,"vadd_kernel");
     LOG(INFO) << "Vector addition kernel created";
-    cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,  
-            size_in_bytes, source_a.data());
-    cl::Buffer buffer_b(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,  
-            size_in_bytes, source_b.data());
-    cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY, 
-            size_in_bytes, source_results.data());
+    cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY, size_in_bytes, source_a.data());
+    LOG(INFO) << "Buffer A created";
+    cl::Buffer buffer_b(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY, size_in_bytes, source_b.data());
+    LOG(INFO) << "Buffer B created";
+    cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY, size_in_bytes, source_results.data());
+    LOG(INFO) << "Buffer Result created";
     if (pause) {
+        LOG(INFO) << "Execute in NIFD testing mode";
         unsigned int mode = NIFD_FREE_RUNNING_MODE;
         int err = 0;
-
         LOG(INFO) << "Switching ICAP clock to NIFD ...";
         err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, 0);
         LOG(INFO) << "Switching ICAP clock to NIFD finished with return code: " << err;
@@ -103,14 +103,18 @@ void run_kernel(int nifd_driver_fd, bool pause) {
         stopped = true;
     }
     q.enqueueMigrateMemObjects({buffer_a,buffer_b},0);
+    LOG(INFO) << "Buffer A and B migration enqueued";
     int narg=0;
     krnl_vector_add.setArg(narg++,buffer_a);
     krnl_vector_add.setArg(narg++,buffer_b);
     krnl_vector_add.setArg(narg++,buffer_result);
     krnl_vector_add.setArg(narg++,DATA_SIZE);
     q.enqueueTask(krnl_vector_add);
+    LOG(INFO) << "Vector addition enqueued";
     q.enqueueMigrateMemObjects({buffer_result, buffer_result, buffer_result, buffer_result},CL_MIGRATE_MEM_OBJECT_HOST);
+    LOG(INFO) << "Buffer Result migration enqueued";
     q.finish();
+    LOG(INFO) << "Command queue cleared";
     if (pause) {
         finished = true;
     }
