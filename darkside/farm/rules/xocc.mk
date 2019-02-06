@@ -1,1 +1,1 @@
-XOCC_OPT_ALL = --profile_kernel data:all:all:all
+XOCC_OPT_ALL = --profile_kernel data:all:all:all --save-temps
