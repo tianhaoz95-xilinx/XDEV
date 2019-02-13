@@ -3,10 +3,10 @@ SOURCE_FILES = ../../../kernel/vadd/vadd_kernel.cl
 default: all
 
 vadd_kernel.xo : $(SOURCE_FILES)
-	xocc -o vadd_kernel.xo -c $(SOURCE_FILES) $(XOCC_OPT_ALL) --target hw --platform $(TARGET_PLATFORM)
+	xocc -o vadd_kernel.xo -c $(SOURCE_FILES) $(XOCC_OPT_ALL) $(USER_XOCC_COMPILE_OPT) --target hw --platform $(TARGET_PLATFORM)
 
 vadd_kernel_hw_all.xclbin : vadd_kernel.xo
-	xocc -o vadd_kernel_hw_all.xclbin -l vadd_kernel.xo $(XOCC_OPT_ALL) --target hw --platform $(TARGET_PLATFORM)
+	xocc -o vadd_kernel_hw_all.xclbin -l vadd_kernel.xo $(XOCC_OPT_ALL) $(USER_XOCC_LINK_OPT) --target hw --platform $(TARGET_PLATFORM)
 
 clean:
 	rm -rf _x
