@@ -12,6 +12,9 @@ _x
 *.ltx
 *.xclbin.info
 
+# host application temp files
+*.o
+
 # python tools
 *.pyc
 

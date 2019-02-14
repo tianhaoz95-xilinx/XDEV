@@ -1,0 +1,1 @@
+package_add_example(xrt/hal hal_level_callback_walkthrough hal_level_callback_walkthrough.cpp)

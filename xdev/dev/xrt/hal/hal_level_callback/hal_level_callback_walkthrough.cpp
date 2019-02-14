@@ -10,12 +10,8 @@ INITIALIZE_EASYLOGGINGPP
 
 using namespace std;
 
-/**
- * Example for opening devices
- */
-int open_devices_demo(int argc, char* argv[]) {
-    START_EASYLOGGINGPP(argc, argv);
-    LOG(INFO) << "Starting Probe example ...";
+int hal_level_callback_walkthrough(int argc, char* argv[]) {
+    LOG(INFO) << "Starting hal level callback walkthough example ...";
     LOG(INFO) << "Probe about to start";
     int device_count = xclProbe();
     LOG(INFO) << "Probe finished";
@@ -24,14 +20,13 @@ int open_devices_demo(int argc, char* argv[]) {
     LOG(INFO) << "Opening device[" << device_index << "] ...";
     xclDeviceHandle device_handle = xclOpen(device_index, "open_devices_demo.log", xclVerbosityLevel::XCL_INFO);
     LOG(INFO) << "Device[" << device_index << "] opened" ;
-
-    LOG(INFO) << "Closing device[0] ...";
-    xclClose(device_handle);
-    LOG(INFO) << "device[0] closed";
+    LOG(INFO) << "Switching on the hal level profiling plugins";
+    int switch_profile_ret = xclSwitchProfiling(device_handle);
+    LOG(INFO) << "Switching on the hal level profiling plugins returned with code: " << switch_profile_ret;
     return 0;
 }
 
 int main(int argc, char* argv[]) {
-    return open_devices_demo(argc, argv);
+    START_EASYLOGGINGPP(argc, argv);
+    return hal_level_callback_walkthrough(argc, argv);
 }
-
