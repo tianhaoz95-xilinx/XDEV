@@ -22,7 +22,11 @@ int hal_level_callback_walkthrough(int argc, char* argv[]) {
     LOG(INFO) << "Device[" << device_index << "] opened" ;
     LOG(INFO) << "Switching on the hal level profiling plugins";
     int switch_profile_ret = xclSwitchProfiling(device_handle);
-    LOG(INFO) << "Switching on the hal level profiling plugins returned with code: " << switch_profile_ret;
+    LOG(INFO) << "xclSwitchProfiling returned with code: " << switch_profile_ret;
+    LOG(INFO) << "Allocating BO onto the device ...";
+    int bo_handle = xclAllocBO(device_handle, 256, xclBOKind::XCL_BO_SHARED_VIRTUAL, 0);
+    LOG(INFO) << "xclAllocBO returned with code: " << bo_handle;
+    xclClose(device_handle);
     return 0;
 }
 
