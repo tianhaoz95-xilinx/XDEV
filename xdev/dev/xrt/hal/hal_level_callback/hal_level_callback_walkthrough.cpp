@@ -22,7 +22,8 @@ void hal_calls(bool profile) {
     LOG(INFO) << "Device[" << device_index << "] opened" ;
     if (profile) {
         LOG(INFO) << "Switching on the hal level profiling plugins";
-        int switch_profile_ret = xclSwitchProfiling(device_handle);
+        HalPluginConfig config = {0};
+        int switch_profile_ret = xclConfigPlugin(device_handle, &config);
         LOG(INFO) << "xclSwitchProfiling returned with code: " << switch_profile_ret;
     }
     LOG(INFO) << "Allocating BO a onto the device ...";
