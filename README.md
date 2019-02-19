@@ -16,6 +16,7 @@ Test field for card related development
 
 ### Quick Start
 
+* Clone the repository. `git clone --recurse-submodules `
 * create a build directory in the project root directory. `mkdir build`
 * `cd build`
 * source the XRT build. `source /path/to/xrt/setup.sh` (please change this to your desired XRT location)
