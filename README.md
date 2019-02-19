@@ -16,6 +16,14 @@ Test field for card related development
 
 ### Quick Start
 
+* create a build directory in the project root directory. `mkdir build`
+* `cd build`
+* source the XRT build. `source /path/to/xrt/setup.sh` (please change this to your desired XRT location)
+* `cmake ..` or `cmake3 ..` depending on which is in your PATH
+* use `make help` to list all the test cases
+* `make [the test case you want]` will build the preferred test case.
+* `./bin/[path to the executable]` will launch the preferred test case binary.
+
 ### Documentation
 
 [For XDEV Developers](https://tianhaoz95-xilinx.github.io/XDEV/developer/html/index.html) 
