@@ -10,7 +10,7 @@ INITIALIZE_EASYLOGGINGPP
 
 using namespace std;
 
-int hal_level_callback_walkthrough(int argc, char* argv[]) {
+void hal_calls(bool profile) {
     LOG(INFO) << "Starting hal level callback walkthough example ...";
     LOG(INFO) << "Probe about to start";
     int device_count = xclProbe();
@@ -20,9 +20,11 @@ int hal_level_callback_walkthrough(int argc, char* argv[]) {
     LOG(INFO) << "Opening device[" << device_index << "] ...";
     xclDeviceHandle device_handle = xclOpen(device_index, "hal_level_callback_walkthrough.log", xclVerbosityLevel::XCL_INFO);
     LOG(INFO) << "Device[" << device_index << "] opened" ;
-    LOG(INFO) << "Switching on the hal level profiling plugins";
-    int switch_profile_ret = xclSwitchProfiling(device_handle);
-    LOG(INFO) << "xclSwitchProfiling returned with code: " << switch_profile_ret;
+    if (profile) {
+        LOG(INFO) << "Switching on the hal level profiling plugins";
+        int switch_profile_ret = xclSwitchProfiling(device_handle);
+        LOG(INFO) << "xclSwitchProfiling returned with code: " << switch_profile_ret;
+    }
     LOG(INFO) << "Allocating BO a onto the device ...";
     int bo_handle_a = xclAllocBO(device_handle, 64, xclBOKind::XCL_BO_DEVICE_RAM, 1);
     LOG(INFO) << "xclAllocBO returned with code: " << bo_handle_a;
@@ -41,6 +43,11 @@ int hal_level_callback_walkthrough(int argc, char* argv[]) {
     int read_bo_a_ret = xclReadBO(device_handle, bo_handle_a, (void*)bo_a_read_buf, 64, 0);
     LOG(INFO) << "xclReadBO returned with code: " << read_bo_a_ret;
     xclClose(device_handle);
+}
+
+int hal_level_callback_walkthrough(int argc, char* argv[]) {
+    hal_calls(false);
+    hal_calls(true);
     return 0;
 }
 
