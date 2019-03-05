@@ -39,13 +39,13 @@ int vector_addition_demo(int argc, char* argv[]) {
     cl::Device device = devices[0];
     cl::Context context(device);
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
-    string xclbinFilename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/vadd/vadd_kernel_hw_all.xclbin";
+    string xclbinFilename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_201830_1/vadd/vadd_kernel_hw_all.xclbin";
     LOG(INFO) << "Loading: '" << xclbinFilename;
     std::ifstream bin_file(xclbinFilename, std::ifstream::binary);
     bin_file.seekg (0, bin_file.end);
     unsigned nb = bin_file.tellg();
     bin_file.seekg (0, bin_file.beg);
-    char *buf = new char [nb];
+    char *buf = new char[nb];
     bin_file.read(buf, nb);
     cl::Program::Binaries bins;
     bins.push_back({buf,nb});

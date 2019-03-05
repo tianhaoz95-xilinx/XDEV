@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2019.1.0 (64-bit)
+# SW Build 2458871 on Sun Feb 24 20:01:21 MST 2019
+# IP Build 2458774 on Sun Feb 24 22:26:31 MST 2019
+# Start of session at: Mon Feb 25 09:34:12 2019
+# Process ID: 18735
+# Current directory: /proj/isi_group/isim/tianhaoz/Github/XDEV/darkside/farm/alveo_u200_nifd_experimental/vadd_apcc_with_tcl_change
+# Command line: vivado ./_x/link/vivado/prj/prj.xpr
+# Log file: /proj/isi_group/isim/tianhaoz/Github/XDEV/darkside/farm/alveo_u200_nifd_experimental/vadd_apcc_with_tcl_change/vivado.log
+# Journal file: /proj/isi_group/isim/tianhaoz/Github/XDEV/darkside/farm/alveo_u200_nifd_experimental/vadd_apcc_with_tcl_change/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project ./_x/link/vivado/prj/prj.xpr
+open_bd_design {/proj/isi_group/isim/tianhaoz/Github/XDEV/darkside/farm/alveo_u200_nifd_experimental/vadd_apcc_with_tcl_change/_x/link/vivado/prj/prj.srcs/my_rm/bd/bd/pfm_dynamic.bd}
+open_bd_design {/proj/isi_group/isim/tianhaoz/Github/XDEV/darkside/farm/alveo_u200_nifd_experimental/vadd_apcc_with_tcl_change/_x/link/vivado/prj/prj.srcs/my_rm/bd/bd/pfm_dynamic.bd}

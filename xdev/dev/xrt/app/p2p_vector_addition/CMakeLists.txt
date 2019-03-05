@@ -1,0 +1,1 @@
+package_add_example(xrt/app p2p_vector_addition p2p_vector_addition.cpp)
