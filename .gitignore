@@ -20,3 +20,6 @@ _x
 
 # private data
 tools/jump_host_automation/config.json
+
+# Xilinx environment files
+sdaccel.ini
