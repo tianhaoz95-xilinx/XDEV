@@ -15,6 +15,9 @@ INITIALIZE_EASYLOGGINGPP
 
 using std::runtime_error;
 using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
 
 void load_nifd_demo_xclbin(string xclbin_filename) {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
@@ -49,7 +52,9 @@ void load_vadd_xclbin() {
     auto device = devices[0];
     auto context = cl::Context(device);
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
-    string vadd_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/vadd/vadd_kernel_hw_all.xclbin";
+    string vadd_filename;
+    cout << "Path to the alternating xclbin: ";
+    cin >> vadd_filename;
     LOG(INFO) << "Loading XCLBIN from " << vadd_filename << " ...";
     cl::Program vadd_program = load_xclbin_create_program(context, {device}, vadd_filename);
     LOG(INFO) << "XCLBIN from " << vadd_filename << " loaded";
@@ -114,14 +119,16 @@ void reset_card_with_hal() {
 
 void nifd_operation() {
     LOG(INFO) << "Executing NIFD operations ...";
-    string nifd_driver_path = get_nifd_driver_path();
+    string nifd_driver_path;
+    cout << "Path to the NIFD driver device: ";
+    cin >> nifd_driver_path;
     LOG(INFO) << "Opening NIFD driver from " << nifd_driver_path << "...";
     int nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
     LOG(INFO) << "NIFD driver from " << nifd_driver_path << " opened with file descriptor: " << nifd_driver_fd;
     unsigned int packet[4];
     packet[0] = 1;
-    packet[1] = 0;
-    packet[2] = 0;
+    packet[1] = 0x00087e0c;
+    packet[2] = 0x12a;
     packet[3] = 0;
     int err = 0;
     LOG(INFO) << "Sending signal to switch ICAP to NIFD ...";
@@ -154,7 +161,9 @@ void load_hello_xclbin() {
     auto device = devices[0];
     auto context = cl::Context(device);
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
-    string hello_filename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_nifd_experimental/hello/hello_kernel_hw_all.xclbin";
+    string hello_filename;
+    cout << "Path to the xclbin that runs the NIFD operations: ";
+    cin >> hello_filename;
     LOG(INFO) << "Loading XCLBIN from " << hello_filename << " ...";
     cl::Program hello_program = load_xclbin_create_program(context, {device}, hello_filename);
     LOG(INFO) << "XCLBIN from " << hello_filename << " loaded";

@@ -34,7 +34,7 @@ vector<cl::Platform> retrieve_platform_by_name(string name) {
         cl::Platform platform = platforms[i];
         std::string platformName = platform.getInfo<CL_PLATFORM_NAME>();
         devlog("Found platform: " + platformName);
-        if (platformName == "Xilinx") {
+        if (platformName == name) {
             devlog("Found VALID platform: " + platformName + " , pushing to the platform array...");
             matches.push_back(platform);
         }
