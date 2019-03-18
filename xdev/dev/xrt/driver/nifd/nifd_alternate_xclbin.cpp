@@ -26,7 +26,7 @@ void set_kernel_debug_bit(unsigned target_value) {
     int err = 0;
     xclDeviceHandle device_handle = xclOpen(0, "nifd_alternate_xclbin_set_debug_bit.log", xclVerbosityLevel::XCL_INFO);
     char data[MAX_IP_LAYOUT_SIZE];
-    read_sysfs_with_config(device_handle, "icap", "ip_layout", MAX_IP_LAYOUT_SIZE, (void*)&data[0]);
+    read_sysfs_with_config(device_handle, "icap", "ip_layout", MAX_IP_LAYOUT_SIZE, (void*)data);
     ip_layout* raw_layout = reinterpret_cast<ip_layout*>(data);
     vector<ip_data> layout;
     for (int i = 0; i < raw_layout->m_count; ++i) {
