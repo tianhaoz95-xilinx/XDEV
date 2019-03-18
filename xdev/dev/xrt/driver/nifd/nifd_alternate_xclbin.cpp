@@ -138,6 +138,10 @@ void nifd_operation() {
     err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
     LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     LOG(INFO) << "Sending signal to switch ICAP to PR ...";
+    LOG(INFO) << "Switch NIFD clock to free running mode ...";
+    unsigned int mode = NIFD_FREE_RUNNING_MODE;
+    err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
+    LOG(INFO) << "Switch NIFD clock to free running mode returned with code: " << err;
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
     LOG(INFO) << "Switching ICAP to PR returned with code: " << err;
     LOG(INFO) << "NIFD operations finished";
