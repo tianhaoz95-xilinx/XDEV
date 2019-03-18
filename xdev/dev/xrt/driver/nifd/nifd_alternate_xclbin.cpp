@@ -39,7 +39,7 @@ void set_kernel_debug_bit(unsigned target_value) {
     for (auto ip : layout) {
         if (ip.m_type == IP_TYPE::IP_KERNEL) {
             uint64_t kernel_base_address = ip.m_base_address;
-            uint64_t kernel_offset = 0x2;
+            uint64_t kernel_offset = 0x0;
             uint64_t absolute_offset = kernel_base_address + kernel_offset;
             unsigned write_buf[256] = {0};
             write_buf[0] = target_value;
