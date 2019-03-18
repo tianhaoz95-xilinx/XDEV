@@ -12,6 +12,7 @@
 #include "xrt/driver/nifd/specification.hpp"
 #include "xrt/driver/nifd/location.hpp"
 #include "xclhal2.h"
+#include "xclbin.h"
 
 INITIALIZE_EASYLOGGINGPP
 
