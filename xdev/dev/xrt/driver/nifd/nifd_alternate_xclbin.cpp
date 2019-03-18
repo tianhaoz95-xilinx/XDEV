@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include "easylogging++.h"
 #include "project/logging.hpp"
+#include "project/config.hpp"
+#include "xrt/hal/sysfs/read_sysfs.hpp"
 #include "xrt/opencl/retrieve_platform.hpp"
 #include "xrt/opencl/retrieve_device.hpp"
 #include "xrt/opencl/load_xclbin.hpp"
@@ -125,18 +127,26 @@ void nifd_operation() {
     LOG(INFO) << "Opening NIFD driver from " << nifd_driver_path << "...";
     int nifd_driver_fd = open(nifd_driver_path.c_str(), O_RDWR);
     LOG(INFO) << "NIFD driver from " << nifd_driver_path << " opened with file descriptor: " << nifd_driver_fd;
-    unsigned int packet[4];
-    packet[0] = 1;
-    packet[1] = 0x0004750c;
-    packet[2] = 0x8a8;
-    packet[3] = 0;
     int err = 0;
     LOG(INFO) << "Sending signal to switch ICAP to NIFD ...";
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, 0);
     LOG(INFO) << "Switching ICAP to NIFD returned with code: " << err;
-    LOG(INFO) << "Sending variable read back to NIFD driver ...";
-    err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
-    LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
+    LOG(INFO) << "Stopping the clock ...";
+    err = ioctl(nifd_driver_fd, NIFD_STOP_CONTROLLED_CLOCK, 0);
+    LOG(INFO) << "Stopping the clock returned with code: " << err;
+    string readback_option;
+    std::cout << "Continue to perform variable readback from NIFD? [y/n]: ";
+    std::cin >> readback_option;
+    if (readback_option == "y") {
+        unsigned int packet[4];
+        packet[0] = 1;
+        packet[1] = 0x0004750c;
+        packet[2] = 0x8a8;
+        packet[3] = 0;
+        LOG(INFO) << "Sending variable read back to NIFD driver ...";
+        err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
+        LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
+    }
     LOG(INFO) << "Sending signal to switch ICAP to PR ...";
     LOG(INFO) << "Switch NIFD clock to free running mode ...";
     unsigned int mode = NIFD_FREE_RUNNING_MODE;
@@ -149,6 +159,33 @@ void nifd_operation() {
     // reset_card_with_hal();
     // reset_icap_with_ioctl();
     return;
+}
+
+void set_kernel_debug_bit() {
+    int err = 0;
+    xclDeviceHandle device_handle = xclOpen(0, "nifd_alternate_xclbin_set_debug_bit.log", xclVerbosityLevel::XCL_INFO);
+    char data[MAX_IP_LAYOUT_SIZE];
+    read_sysfs_with_config(device_handle, "icap", "ip_layout", MAX_IP_LAYOUT_SIZE, (void*)&data[0]);
+    ip_layout* raw_layout = reinterpret_cast<ip_layout*>(data);
+    vector<ip_data> layout;
+    for (int i = 0; i < raw_layout->m_count; ++i) {
+        layout.push_back(raw_layout->m_ip_data[i]);
+    }
+    for (auto ip : layout) {
+        if (ip.m_type == IP_TYPE::IP_KERNEL) {
+            uint64_t kernel_base_address = ip.m_base_address;
+            uint64_t kernel_offset = 0x8;
+            uint64_t target_value = 0x1;
+            uint64_t absolute_offset = kernel_base_address + kernel_offset;
+            size_t target_size = 1;
+            err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, &target_value, target_size);
+            if (err < 0) {
+                LOG(INFO) << "xclWrite failed with error code: " << err;
+            } else {
+                LOG(INFO) << "xclWrite to kernel success";
+            }
+        }
+    }
 }
 
 void load_hello_xclbin() {
