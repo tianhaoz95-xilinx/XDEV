@@ -41,9 +41,11 @@ void set_kernel_debug_bit(unsigned target_value) {
             uint64_t kernel_base_address = ip.m_base_address;
             uint64_t kernel_offset = 0x2;
             uint64_t absolute_offset = kernel_base_address + kernel_offset;
+            unsigned write_buf[256] = {0};
+            write_buf[0] = target_value;
             size_t target_size = 4;
             LOG(INFO) << "Writing debug bit to the kernel ...";
-            err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, &target_value, target_size);
+            err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, write_buf, target_size);
             LOG(INFO) << "Writing debug bit to the kernel finished";
             if (err < 0) {
                 LOG(INFO) << "xclWrite failed with error code: " << err;
