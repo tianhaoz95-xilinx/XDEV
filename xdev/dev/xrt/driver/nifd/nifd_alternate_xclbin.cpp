@@ -21,6 +21,32 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+void set_kernel_debug_bit(unsigned target_value) {
+    int err = 0;
+    xclDeviceHandle device_handle = xclOpen(0, "nifd_alternate_xclbin_set_debug_bit.log", xclVerbosityLevel::XCL_INFO);
+    char data[MAX_IP_LAYOUT_SIZE];
+    read_sysfs_with_config(device_handle, "icap", "ip_layout", MAX_IP_LAYOUT_SIZE, (void*)&data[0]);
+    ip_layout* raw_layout = reinterpret_cast<ip_layout*>(data);
+    vector<ip_data> layout;
+    for (int i = 0; i < raw_layout->m_count; ++i) {
+        layout.push_back(raw_layout->m_ip_data[i]);
+    }
+    for (auto ip : layout) {
+        if (ip.m_type == IP_TYPE::IP_KERNEL) {
+            uint64_t kernel_base_address = ip.m_base_address;
+            uint64_t kernel_offset = 0x2;
+            uint64_t absolute_offset = kernel_base_address + kernel_offset;
+            size_t target_size = 1;
+            err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, &target_value, target_size);
+            if (err < 0) {
+                LOG(INFO) << "xclWrite failed with error code: " << err;
+            } else {
+                LOG(INFO) << "xclWrite to kernel success";
+            }
+        }
+    }
+}
+
 void load_nifd_demo_xclbin(string xclbin_filename) {
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
     if (xilinx_platforms.empty()) {
@@ -120,6 +146,7 @@ void reset_card_with_hal() {
 }
 
 void nifd_operation() {
+    set_kernel_debug_bit(0x1);
     LOG(INFO) << "Executing NIFD operations ...";
     string nifd_driver_path;
     cout << "Path to the NIFD driver device: ";
@@ -152,6 +179,7 @@ void nifd_operation() {
     unsigned int mode = NIFD_FREE_RUNNING_MODE;
     err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
     LOG(INFO) << "Switch NIFD clock to free running mode returned with code: " << err;
+    set_kernel_debug_bit(0x0);
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
     LOG(INFO) << "Switching ICAP to PR returned with code: " << err;
     LOG(INFO) << "NIFD operations finished";
@@ -159,33 +187,6 @@ void nifd_operation() {
     // reset_card_with_hal();
     // reset_icap_with_ioctl();
     return;
-}
-
-void set_kernel_debug_bit() {
-    int err = 0;
-    xclDeviceHandle device_handle = xclOpen(0, "nifd_alternate_xclbin_set_debug_bit.log", xclVerbosityLevel::XCL_INFO);
-    char data[MAX_IP_LAYOUT_SIZE];
-    read_sysfs_with_config(device_handle, "icap", "ip_layout", MAX_IP_LAYOUT_SIZE, (void*)&data[0]);
-    ip_layout* raw_layout = reinterpret_cast<ip_layout*>(data);
-    vector<ip_data> layout;
-    for (int i = 0; i < raw_layout->m_count; ++i) {
-        layout.push_back(raw_layout->m_ip_data[i]);
-    }
-    for (auto ip : layout) {
-        if (ip.m_type == IP_TYPE::IP_KERNEL) {
-            uint64_t kernel_base_address = ip.m_base_address;
-            uint64_t kernel_offset = 0x8;
-            uint64_t target_value = 0x1;
-            uint64_t absolute_offset = kernel_base_address + kernel_offset;
-            size_t target_size = 1;
-            err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, &target_value, target_size);
-            if (err < 0) {
-                LOG(INFO) << "xclWrite failed with error code: " << err;
-            } else {
-                LOG(INFO) << "xclWrite to kernel success";
-            }
-        }
-    }
 }
 
 void load_hello_xclbin() {
