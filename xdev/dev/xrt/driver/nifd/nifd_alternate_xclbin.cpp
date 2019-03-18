@@ -27,18 +27,24 @@ void set_kernel_debug_bit(unsigned target_value) {
     xclDeviceHandle device_handle = xclOpen(0, "nifd_alternate_xclbin_set_debug_bit.log", xclVerbosityLevel::XCL_INFO);
     char data[MAX_IP_LAYOUT_SIZE];
     read_sysfs_with_config(device_handle, "icap", "ip_layout", MAX_IP_LAYOUT_SIZE, (void*)data);
+    LOG(INFO) << "Casting raw data to ip layout";
     ip_layout* raw_layout = reinterpret_cast<ip_layout*>(data);
+    LOG(INFO) << "Casting finished";
     vector<ip_data> layout;
+    LOG(INFO) << "Converting ip_layout to C++ format ...";
     for (int i = 0; i < raw_layout->m_count; ++i) {
         layout.push_back(raw_layout->m_ip_data[i]);
     }
+    LOG(INFO) << "Converting ip_layout to C++ format finished";
     for (auto ip : layout) {
         if (ip.m_type == IP_TYPE::IP_KERNEL) {
             uint64_t kernel_base_address = ip.m_base_address;
             uint64_t kernel_offset = 0x2;
             uint64_t absolute_offset = kernel_base_address + kernel_offset;
             size_t target_size = 1;
+            LOG(INFO) << "Writing debug bit to the kernel ...";
             err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, &target_value, target_size);
+            LOG(INFO) << "Writing debug bit to the kernel finished";
             if (err < 0) {
                 LOG(INFO) << "xclWrite failed with error code: " << err;
             } else {
