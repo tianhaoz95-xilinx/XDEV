@@ -155,7 +155,7 @@ void reset_card_with_hal() {
 }
 
 void nifd_operation() {
-    set_kernel_debug_bit(0x1);
+    set_kernel_debug_bit(0x100);
     LOG(INFO) << "Executing NIFD operations ...";
     string nifd_driver_path;
     cout << "Path to the NIFD driver device: ";
@@ -188,7 +188,7 @@ void nifd_operation() {
     unsigned int mode = NIFD_FREE_RUNNING_MODE;
     err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
     LOG(INFO) << "Switch NIFD clock to free running mode returned with code: " << err;
-    set_kernel_debug_bit(0x0);
+    set_kernel_debug_bit(0x000);
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
     LOG(INFO) << "Switching ICAP to PR returned with code: " << err;
     LOG(INFO) << "NIFD operations finished";
