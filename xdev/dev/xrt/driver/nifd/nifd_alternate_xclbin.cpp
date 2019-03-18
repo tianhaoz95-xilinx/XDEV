@@ -127,8 +127,8 @@ void nifd_operation() {
     LOG(INFO) << "NIFD driver from " << nifd_driver_path << " opened with file descriptor: " << nifd_driver_fd;
     unsigned int packet[4];
     packet[0] = 1;
-    packet[1] = 0x00087e0c;
-    packet[2] = 0x12a;
+    packet[1] = 0x0004750c;
+    packet[2] = 0x8a8;
     packet[3] = 0;
     int err = 0;
     LOG(INFO) << "Sending signal to switch ICAP to NIFD ...";
