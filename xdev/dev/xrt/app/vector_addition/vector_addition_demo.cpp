@@ -8,6 +8,10 @@
 
 INITIALIZE_EASYLOGGINGPP
 
+using std::cout;
+using std::cin;
+using std::endl;
+
 int vector_addition_demo(int argc, char* argv[]) {
     /*
     auto xilinx_platforms = retrieve_platform_by_name("Xilinx");
@@ -39,8 +43,10 @@ int vector_addition_demo(int argc, char* argv[]) {
     cl::Device device = devices[0];
     cl::Context context(device);
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
-    string xclbinFilename = "/home/xsjbrd6/Desktop/darkside/farm/alveo_u200_201830_1/vadd/vadd_kernel_hw_all.xclbin";
-    LOG(INFO) << "Loading: '" << xclbinFilename;
+    string xclbinFilename;
+    cout << "The vadd xclbin to be loaded: ";
+    cin >> xclbinFilename;
+    LOG(INFO) << "Loading: '" << xclbinFilename << " ...";
     std::ifstream bin_file(xclbinFilename, std::ifstream::binary);
     bin_file.seekg (0, bin_file.end);
     unsigned nb = bin_file.tellg();
@@ -52,7 +58,10 @@ int vector_addition_demo(int argc, char* argv[]) {
     devices.resize(1);
     cl::Program program(context, devices, bins);
     LOG(INFO) << "OpenCL program created";
-    cl::Kernel krnl_vector_add(program,"vadd_kernel");
+    string kernel_name;
+    cout << "The vadd kernel name to be loaded [vadd_kernel for XDEV and krnl_vadd for Xilinx examples]: ";
+    cin >> kernel_name;
+    cl::Kernel krnl_vector_add(program, kernel_name);
     LOG(INFO) << "Vector addition kernel created";
     cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY, size_in_bytes, source_a.data());
     LOG(INFO) << "Buffer A created";
