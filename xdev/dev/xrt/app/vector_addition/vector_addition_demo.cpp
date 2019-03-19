@@ -61,7 +61,7 @@ int vector_addition_demo(int argc, char* argv[]) {
     string kernel_name;
     cout << "The vadd kernel name to be loaded [vadd_kernel for XDEV and krnl_vadd for Xilinx examples]: ";
     cin >> kernel_name;
-    cl::Kernel krnl_vector_add(program, kernel_name);
+    cl::Kernel krnl_vector_add(program, kernel_name.c_str());
     LOG(INFO) << "Vector addition kernel created";
     cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY, size_in_bytes, source_a.data());
     LOG(INFO) << "Buffer A created";
