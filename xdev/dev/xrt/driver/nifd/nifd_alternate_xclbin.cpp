@@ -176,8 +176,8 @@ void nifd_operation() {
     if (readback_option == "y") {
         unsigned int packet[4];
         packet[0] = 1;
-        packet[1] = 0x0004750c;
-        packet[2] = 0x8a8;
+        packet[1] = 0x0000730c;
+        packet[2] = 0x7ea;
         packet[3] = 0;
         LOG(INFO) << "Sending variable read back to NIFD driver ...";
         err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
