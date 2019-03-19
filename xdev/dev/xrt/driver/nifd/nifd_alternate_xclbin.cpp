@@ -52,9 +52,11 @@ void set_kernel_debug_bit(SetKernelDebugBitMode mode) {
             err = xclRead(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, write_buf, target_size);
             LOG(INFO) << "Reading control register values from the kernel returned with code: " << err;
             if (mode == SetKernelDebugBitMode::SET) {
+                LOG(INFO) << "Setting the bit with  val | 0x100...";
                 write_buf[0] = write_buf[0] | 0x100;
             }
             if (mode == SetKernelDebugBitMode::CLEAR) {
+                LOG(INFO) << "Setting the bit with  val & ~(0x100)";
                 write_buf[0] = write_buf[0] & ~(0x100);
             }
             LOG(INFO) << "Writing debug bit to the kernel ...";
@@ -180,9 +182,14 @@ void nifd_operation() {
     LOG(INFO) << "Sending signal to switch ICAP to NIFD ...";
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_NIFD, 0);
     LOG(INFO) << "Switching ICAP to NIFD returned with code: " << err;
-    LOG(INFO) << "Stopping the clock ...";
-    err = ioctl(nifd_driver_fd, NIFD_STOP_CONTROLLED_CLOCK, 0);
-    LOG(INFO) << "Stopping the clock returned with code: " << err;
+    string clock_option;
+    std::cout << "Continue to perform NIFD clock operations? [y/n]: ";
+    std::cin >> clock_option;
+    if (clock_option == "y") {
+        LOG(INFO) << "Stopping the clock ...";
+        err = ioctl(nifd_driver_fd, NIFD_STOP_CONTROLLED_CLOCK, 0);
+        LOG(INFO) << "Stopping the clock returned with code: " << err;
+    }
     string readback_option;
     std::cout << "Continue to perform variable readback from NIFD? [y/n]: ";
     std::cin >> readback_option;
@@ -196,12 +203,14 @@ void nifd_operation() {
         err = ioctl(nifd_driver_fd, NIFD_READBACK_VARIABLE, packet);
         LOG(INFO) << "NIFD variable read back returned with error code: " << err << ", result: " << packet[3];
     }
-    LOG(INFO) << "Sending signal to switch ICAP to PR ...";
-    LOG(INFO) << "Switch NIFD clock to free running mode ...";
-    unsigned int mode = NIFD_FREE_RUNNING_MODE;
-    err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
-    LOG(INFO) << "Switch NIFD clock to free running mode returned with code: " << err;
+    if (clock_option == "y") {
+        LOG(INFO) << "Switch NIFD clock to free running mode ...";
+        unsigned int mode = NIFD_FREE_RUNNING_MODE;
+        err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
+        LOG(INFO) << "Switch NIFD clock to free running mode returned with code: " << err;
+    }
     set_kernel_debug_bit(SetKernelDebugBitMode::CLEAR);
+    LOG(INFO) << "Sending signal to switch ICAP to PR ...";
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
     LOG(INFO) << "Switching ICAP to PR returned with code: " << err;
     LOG(INFO) << "NIFD operations finished";
