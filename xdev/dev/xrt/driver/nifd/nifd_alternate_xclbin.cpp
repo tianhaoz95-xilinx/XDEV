@@ -55,7 +55,7 @@ void set_kernel_debug_bit(SetKernelDebugBitMode mode) {
                 write_buf[0] = write_buf[0] | 0x100;
             }
             if (mode == SetKernelDebugBitMode::CLEAR) {
-                write_buf[0] = write_buf[0] & 0xeff;
+                write_buf[0] = write_buf[0] & ~(0x100);
             }
             LOG(INFO) << "Writing debug bit to the kernel ...";
             err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, write_buf, target_size);
