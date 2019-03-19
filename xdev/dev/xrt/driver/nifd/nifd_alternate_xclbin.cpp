@@ -22,7 +22,12 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void set_kernel_debug_bit(unsigned target_value) {
+enum class SetKernelDebugBitMode {
+    SET,
+    CLEAR
+};
+
+void set_kernel_debug_bit(SetKernelDebugBitMode mode) {
     int err = 0;
     xclDeviceHandle device_handle = xclOpen(0, "nifd_alternate_xclbin_set_debug_bit.log", xclVerbosityLevel::XCL_INFO);
     char data[MAX_IP_LAYOUT_SIZE];
@@ -42,11 +47,19 @@ void set_kernel_debug_bit(unsigned target_value) {
             uint64_t kernel_offset = 0x0;
             uint64_t absolute_offset = kernel_base_address + kernel_offset;
             unsigned write_buf[256] = {0};
-            write_buf[0] = target_value;
             size_t target_size = 4;
+            LOG(INFO) << "Reading control register values from the kernel ...";
+            err = xclRead(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, write_buf, target_size);
+            LOG(INFO) << "Reading control register values from the kernel returned with code: " << err;
+            if (mode == SetKernelDebugBitMode::SET) {
+                write_buf[0] = write_buf[0] | 0x100;
+            }
+            if (mode == SetKernelDebugBitMode::CLEAR) {
+                write_buf[0] = write_buf[0] & 0xeff;
+            }
             LOG(INFO) << "Writing debug bit to the kernel ...";
             err = xclWrite(device_handle, xclAddressSpace::XCL_ADDR_KERNEL_CTRL, absolute_offset, write_buf, target_size);
-            LOG(INFO) << "Writing debug bit to the kernel finished";
+            LOG(INFO) << "Writing debug bit to the kernel returned with code: " << err;
             if (err < 0) {
                 LOG(INFO) << "xclWrite failed with error code: " << err;
             } else {
@@ -155,7 +168,7 @@ void reset_card_with_hal() {
 }
 
 void nifd_operation() {
-    set_kernel_debug_bit(0x100);
+    set_kernel_debug_bit(SetKernelDebugBitMode::SET);
     LOG(INFO) << "Executing NIFD operations ...";
     string nifd_driver_path;
     cout << "Path to the NIFD driver device: ";
@@ -188,7 +201,7 @@ void nifd_operation() {
     unsigned int mode = NIFD_FREE_RUNNING_MODE;
     err = ioctl(nifd_driver_fd, NIFD_START_CONTROLLED_CLOCK, &mode);
     LOG(INFO) << "Switch NIFD clock to free running mode returned with code: " << err;
-    set_kernel_debug_bit(0x000);
+    set_kernel_debug_bit(SetKernelDebugBitMode::CLEAR);
     err = ioctl(nifd_driver_fd, NIFD_SWITCH_ICAP_TO_PR, 0);
     LOG(INFO) << "Switching ICAP to PR returned with code: " << err;
     LOG(INFO) << "NIFD operations finished";
